@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
         });
         
         if( (audio.buffered !== undefined) && (audio.buffered.length !== 0) ){
-            $(audio).on('progress', function(){console.log('yo');
+            $(audio).on('progress', function(){
                 var loaded = parseInt(((audio.buffered.end(0)/audio.duration)*100),10);
                 $('#loading').css({'width':loaded+'%'});
             });
