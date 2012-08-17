@@ -74,20 +74,6 @@
 	box-shadow:0 1px 4px rgba(20, 30, 40, .75) inset, 0 1px 0 rgba(176, 187, 198, .5);
 }
 
-#loading {
-	background:#fff;
-	background:#939eaa;
-	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#eaeef1), to(#c7cfd8));
-	background:-moz-linear-gradient(top, #eaeef1, #c7cfd8);
-	background:linear-gradient(top, #eaeef1, #c7cfd8);
-	box-shadow:0 1px 0 #fff inset, 0 1px 0 #141e28;
-	border-radius:3px;
-	display:block;
-	float:left;
-	min-width:6px;
-	height:6px;
-}
-
 .knob {
 	position:absolute;
 	top:-5px;
