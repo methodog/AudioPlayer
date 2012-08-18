@@ -1,12 +1,11 @@
 jQuery(document).ready(function() {
 
     $('#player').append('<audio preload="metadata"><source src="test.wav" type="audio/wav"></source><source src="test.ogg" type="audio/ogg"></source></audio>');
-    
-    var supportsAudio = !!document.createElement('audio').canPlayType,
-        audio, manualSeek = 0, vol = 0.7;
 
-    if( supportsAudio ){
-        audio = $('audio').get(0);
+    if( !!document.createElement('audio').canPlayType ){
+        var audio = $('audio').get(0), 
+            manualSeek = 0, 
+            vol = 0.7;
                 
         audio.volume = vol;
         
@@ -21,16 +20,15 @@ jQuery(document).ready(function() {
             }
         });
         
-        $(audio)
-        .on('timeupdate', function(){
-            var rem = parseInt(audio.duration-audio.currentTime,10),
-                    pos = (audio.currentTime/audio.duration)*100,
-                    mins = Math.floor(rem/60,10),
-                    secs = rem-mins*60;
-            
-            $('#time').text('-'+mins+':'+ (secs<10 ? '0'+secs : secs));
+        $(audio).on('loadeddata', function(){
+            var t = parseInt(audio.duration,10),
+                m = Math.floor(t/60,10),
+                s = t-m*60;
+            $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
+        }).on('timeupdate', function(){
+            var pos = (audio.currentTime/audio.duration)*100;
             if( !manualSeek ){
-                $('#prog>.knob').css({left:pos+'%'});
+                $('#progknob').css({left:pos+'%'});
             }
             $('#prog').slider({
                 step:0.01,

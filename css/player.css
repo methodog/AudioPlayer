@@ -1,12 +1,12 @@
-body { color:#36424a; font:13.5px/1.184 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; }
+body { background:#36424a; color:#36424a; font:24px/1.184 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; }
 img { vertical-align:bottom; }
 p, ol, ul { margin-bottom:1em; }
 a { color:#292728; text-decoration:underline; }
 a:active { color:#000; text-decoration:none; }
-h1, h2 { font-family:"V&A TheSansExtraBoldPlain",arial,helvetica,freesans,sans-serif; font-size:171.43%; font-weight:normal; line-height:1.1em; }
-strong { font-family:"V&A TheSansSemiBoldPlain",arial,helvetica,freesans,sans-serif; font-weight:500; }
+h1, h2 { font-size:125%; font-weight:normal; line-height:1.1em; }
+strong { font-weight:500; }
 abbr, acronym { border-bottom:1px dotted #b5b5b5; } 
-em { font-size:103.57%; font-style:italic; font-family:"V&A TheSansLightItalic",arial,helvetica,freesans,sans-serif; }
+em { font-style:italic; }
 small, sub, sup { font-size:85%; }
 sub, sup { position:relative; vertical-align:baseline; }
 sub { bottom:-0.3em; }
@@ -16,71 +16,16 @@ ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
 
-#player {
-	display:block;
-	height:48px;
-	width:484px;
-	position:relative;
-	cursor:default;
-}
+.button { background:#34556a; border-radius:41px; color:#fff!important; cursor:pointer; display:inline-block; height:82px; font-size:125%; line-height:78px; text-align:center; text-decoration:none; width:82px; }
+.button:hover { background:#587a8e; }
 
-#play {
-	position:absolute;
-	top:9px;
-	left:10px;
-	width:30px;
-	height:30px;
-	background:url(img/player.png) no-repeat -30px 0;
-	cursor:pointer;
-}
+#pane { background:#fff; margin:40px auto 0; width:600px; }
 
-#play.playing {
-	background-position:0 0;
-}
-
-#play:active {
-	top:10px;
-}
-
-#time {
-	line-height:48px;
-	position:absolute;
-	top:0;
-	right:0;
-	width:50px;
-	text-align:center;
-}
-
-#prog {
-	position:absolute;
-	top:19px;
-	left:50px;
-	right:50px;
-	height:1px;
-	background:#9b9b9b;
-}
-
-#vol {
-	position:absolute;
-	top:44px;
-	left:130px;
-	right:130px;
-	height:77px;
-	border:3px solid #34556a;
-	border-radius:40px;
-	background:#d1cfcc;
-}
-
-.knob {
-	position:absolute;
-	top:-20px;
-	left:0;
-    background:#34556a;
-	width:10px;
-	height:40px;
-	margin-left:-5px;
-	cursor:pointer;
-}
-
-.butt { background:#34556a; }
-.butt:hover { background:#587a8e; }
+#player { height:140px; margin:0 auto; width:98%; position:relative; }
+#time { font-size:30px; position:absolute; top:-10px; right:0; }
+#prog { height:1px; background:#9b9b9b; position:absolute; top:19px; left:0; right:84px; }
+#progknob { background:#34556a; height:40px; width:10px; margin:-20px 0  0 -5px; cursor:pointer; position:absolute; }
+#ctrls { position:absolute; bottom:0; }
+#volbg { background:#d1cfcc; border:3px solid #34556a; border-radius:41px; display:inline-block; height:76px; width:205px; position:relative; top:31px; }
+#vol { position:absolute; left:38px; right:38px; }
+#volknob { margin:-3px 0 0 -41px; cursor:pointer; position:absolute; }

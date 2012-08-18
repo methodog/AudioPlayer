@@ -6,16 +6,22 @@
     <link rel="stylesheet" type="text/css" href="css/player.css">
 </head>
 <body>
-    <p id="player">
-        <span id="play"></span>
-        <span id="prog">
-            <span class="knob ui-slider-handle"></span>
-        </span>
-        <span id="vol">
-            <span class="knob ui-slider-handle"></span>
-        </span>
-        <span id="time"></span>
-    </p>
+    <div id="pane">
+        <div id="player">
+            <div id="prog">
+                <span id="progknob" class="ui-slider-handle"></span>
+            </div>
+            <span id="time"></span>
+            <div id="ctrls">
+                <a class="button" id="play">Play</a>
+                <div id="volbg">
+                    <div id="vol">
+                        <span id="volknob" class="button ui-slider-handle"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-git.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
