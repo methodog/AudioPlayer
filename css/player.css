@@ -19,7 +19,10 @@ li { margin:0 0 0.5em; }
 .button { background:#34556a; border-radius:41px; color:#fff!important; cursor:pointer; display:inline-block; height:82px; font-size:125%; line-height:78px; text-align:center; text-decoration:none; width:82px; }
 .button:hover { background:#587a8e; }
 
-#pane { background:#fff; margin:40px auto 0; width:600px; }
+#pane { background:#fff; margin:40px auto 0; width:600px; position:relative; }
+
+#menu { margin:0 auto; width:500px; }
+#menu>.button { border-radius:0; height:auto; margin:0 0 20px; text-align:left; text-indent:40px; vertical-align:middle; width:100%; }
 
 #player { height:140px; margin:0 auto; width:98%; position:relative; }
 #time { font-size:30px; position:absolute; top:-10px; right:0; }
@@ -29,3 +32,5 @@ li { margin:0 0 0.5em; }
 #volbg { background:#d1cfcc; border:3px solid #34556a; border-radius:41px; display:inline-block; height:76px; width:205px; position:relative; top:31px; }
 #vol { position:absolute; left:38px; right:38px; }
 #volknob { margin:-3px 0 0 -41px; cursor:pointer; position:absolute; }
+
+#timeout>img { height:auto; width:100%; position:absolute; top:0; left:0; z-index:1; }

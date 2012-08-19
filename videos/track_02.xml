@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1"  
+xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
+<head>
+<styling>
+<style id="1" tts:textAlign="right"/>
+<style id="2" tts:color="transparent"/>
+<style id="3" style="2" tts:backgroundColor="white"/>
+<style id="4" style="2 3" tts:fontSize="20"/>
+</styling>
+</head>
+<body>
+<div xml:lang="en">
+<p begin="0:00:00" dur="00:00:22.00">Donato di Niccolò di Betto Bardi – better known as Donatello – is widely regarded as the greatest sculptor of the fifteenth century.  Although he was born to a humble family in Florence around 1387, he was highly educated and soon rose to fame, receiving commissions from the ruling Medici family and other important patrons.</p>
+<p begin="0:00:22" dur="00:00:14.00">Donatello was admired for the powerful expression of his sculptures, which captured the emotions of the figures and scenes he portrayed.  In 1550, the painter and writer Giorgio Vasari wrote in his book, &lt;i&gt;The Lives of the Artists:&lt;/i&gt;</p>
+<p begin="0:00:36" dur="00:00:24.00">‘The world is so full of Donato's work that it may be truthfully affirmed that no artist ever produced more than he. […] he, single-handed, brought perfection and delight back to our age [by the multitude of his works]… “His work showed such excellent qualities of grace and design that it was considered nearer what was done by the ancient Greeks and Romans than that of any other artist.’</p>
+<p begin="0:01:00" dur="00:00:11.00">According to Vasari, however, some aspects of Donatello’s character were less praiseworthy.  He was often quarrelsome, even violent.  He threatened to kill an apprentice after an argument.</p>
+<p begin="0:01:11" dur="00:00:18.00">And when a patron complained that he was being charged too much for a bronze head, Donatello flew into a rage and smashed the work.  But he could also be generous: he supposedly kept a basket of money in his workshop so that assistants and friends could take what they wanted without asking.</p>
+<p begin="0:01:29" dur="00:00:20.00">Donatello is considered the inventor and master of rilievo schiacciato, or squashed relief, the subtle carving used to create the delicate marble panel in front of this audio point.  As a favourite of Cosimo de’ Medici, he was financially supported to his death, and considered both servant and friend.</p>
+<p begin="0:01:49" dur="00:00:21.00">Donatello died in 1466 at around 80 years of age and was buried near the tomb of his great patron.  Cosimo apparently wanted them to be as close to each other in death as they had been in life. &lt;br&gt;&lt;br&gt;You can see several other works by or closely associated with Donatello in this gallery.</p>
+</div>    
+</body>
+</tt>

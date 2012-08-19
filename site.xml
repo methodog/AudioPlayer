@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+<site>
+	<itemspermenupage>5</itemspermenupage>	<!-- default number for menus but each menu and submenu can be set independently -->
+
+	<!-- the home menu -->
+	<home>
+		<type>widemenu</type>
+		<!-- can the following title wrap? -->
+		<name>Donatello and the Making of Art 1400-1500</name>
+		<itemsperpage>6</itemsperpage>
+		<bgimg> </bgimg>
+		
+		<link>track_01</link>
+		<link>track_02</link>
+		<link>track_03</link>
+		<link>track_04</link>
+		<link>track_05</link>
+	</home>
+
+
+	<!-- the tracks-->
+
+	<track_01>
+		<type>page</type>
+		<menuname>Donatello's &lt;i&gt;Ascension Relief&lt;/i&gt;</menuname>
+		<name>Donatello's &lt;i&gt;Ascension Relief &lt;/i&gt;&lt;br&gt;[with Christ giving the Keys to St. Peter] Enhanced audio description for visually impaired visitors.</name>
+		<intro> </intro>
+		<up>home</up>
+		<video>./videos/track_01</video>
+		<next>track_02</next>
+	</track_01>
+
+	<track_02>
+		<type>page</type>
+		<menuname>The Life of Donatello</menuname>
+		<name>The Life of Donatello &lt;br&gt;Extracts from Vasari's &lt;i&gt;Lives of the Artists.&lt;/i&gt;</name>
+		<intro> </intro>
+		<up>home</up>
+		<video>./videos/track_02</video>
+		<next>track_03</next>
+	</track_02>
+
+	<track_03>
+		<type>page</type>
+		<!-- Can the following be in italics?  YES-->
+		<menuname>A Ceiling from Cremona</menuname>
+		<name>A Ceiling from Cremona &lt;br&gt;Enhanced audio description for visually impaired visitors.</name>
+		<intro> </intro>
+		<up>home</up>
+		<video>./videos/track_03</video>
+		<next>track_04</next>
+	</track_03>
+	
+	<track_04>
+		<type>page</type>
+		<menuname>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt;</menuname>
+		<name>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt; &lt;br&gt;(Hail, Flower of the Tuscan People) (music) Guillaume Dufay, about 1436.</name>
+		<intro> </intro>
+		<up>home</up>
+		<video>./videos/track_04</video>
+		<next>track_05</next>
+	</track_04>
+	
+	<track_05>
+		<type>page</type>
+		<menuname>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;</menuname>
+		<name>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;&lt;br&gt;(If ever in wonder) (music)</name>
+		<intro> </intro>
+		<up>home</up>
+		<video>./videos/track_05</video>
+		<next>track_01</next>
+	</track_05>
+
+
+ </site>

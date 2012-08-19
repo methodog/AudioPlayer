@@ -1,8 +1,55 @@
 jQuery(document).ready(function() {
 
-    $('audio').append('<source src="test.wav" type="audio/wav"></source><source src="test.ogg" type="audio/ogg"></source>');
+    $.get('./timeout/index.xml', function(xml){
+        var $img = $(xml).children('timeout').children('image');
+        if( $img.length>0 ){
+            $img.each(function(){
+                $('#timeout').append('<img src="./timeout/'+$(this).text()+'" title="Click to begin" alt=""/>');
+            });
+            $('#timeout').each(function(){
+                var to = this, t;
+                this.init = function(){
+                    $(this).show();
+                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){to.flick();}, 4000); }
+                };
+                this.flick = function(){
+                    $(this).append($(this).children(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
+                    t = setTimeout(function(){ to.flick(); }, 4000);
+                };
+                this.reset = function(){
+                    clearTimeout(t);
+                    $(this).hide();
+                    t = setTimeout(function(){ to.init(); }, 80000);
+                };
+                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); });
+                $('html').css({'cursor':'none'});
+                this.init();
+            });
+        }
+    });
     
-    $('#player').each(function(){
+    $.get('./site.xml', function(xml){
+        var $menu = $(xml).children('site'),
+            header = $menu.children('home').children('name').text(),
+            $link = $menu.children('home').children('link');
+        $('#menu').append('<h1>'+header+'</h1>');
+        $link.each(function(){
+            var $track = $menu.children($(this).text()),
+                title = $track.children('menuname').text(),
+                file = $track.children('video').text();
+            $('#menu').append('<div class="button" data-file="'+file+'">'+title+'</div>');
+        });
+    });
+    
+    $('#menu').on('click', '.button', function(){
+        var file = $(this).data('file');
+        $('audio').children('source').remove();
+        $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+        $('#menu').hide();
+        $('#player').show()
+    });
+    
+    $('#player').hide().each(function(){
         if( !!document.createElement('audio').canPlayType ){
             var audio = $('audio').get(0), 
                 manualSeek = 0, 
