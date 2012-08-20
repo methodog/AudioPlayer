@@ -15,15 +15,16 @@ ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
 
-.button { background:#34556a; border-radius:41px; color:#fff; display:inline-block; height:82px; font-size:125%; line-height:2.6em; text-align:center; text-decoration:none; width:82px; }
+.right { float:right; }
+.button { background:#34556a; border-radius:41px; color:#fff; display:inline-block; height:82px; font-size:125%; line-height:2.6em; margin:0 0 10px; text-align:center; text-decoration:none; width:82px; }
 .button:hover { background:#587a8e; }
+.menu.button { border-radius:0; font-size:100%; height:auto; text-align:left; margin:0 0 20px; text-indent:40px; vertical-align:middle; width:100%; }
 
 #pane { background:#fff; margin:0 auto; padding:30px 0 0; width:600px; position:relative; }
 
-#menu { margin:0 auto; width:500px; }
-#menu>.button { border-radius:0; font-size:100%; height:auto; margin:0 0 20px; text-align:left; text-indent:40px; vertical-align:middle; width:100%; }
+#menu { margin:0 auto; overflow:auto; width:500px; }
 
-#player { height:140px; margin:0 auto; width:98%; position:relative; }
+#player { height:150px; margin:0 auto; width:98%; position:relative; }
 #time { font-size:30px; position:absolute; top:-10px; right:0; }
 #prog { height:1px; background:#999999; position:absolute; top:19px; left:0; right:84px; }
 #progknob { background:#34556a; height:40px; width:10px; margin:-20px 0  0 -5px; position:absolute; }

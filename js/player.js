@@ -9,17 +9,19 @@ jQuery(document).ready(function() {
             var $track = $menu.children($(this).text()),
                 title = $track.children('menuname').text(),
                 file = $track.children('video').text();
-            $('#menu').append('<a class="button" data-file="'+file+'">'+title+'</a>');
+            $('#menu').append('<a class="menu button" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
         });
+        $('#menu').on('click', '.menu.button', function(){
+            var file = $(this).data('file');
+            $('audio').children('source').remove();
+            $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+            $('#menu').hide();
+            $('#player').show()
+        });
+        $('#menu').append($('<a class="button right" href="javascript:void(0)">Start</a>').on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); }));
     });
     
-    $('#menu').on('click', '.button', function(){
-        var file = $(this).data('file');
-        $('audio').children('source').remove();
-        $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
-        $('#menu').hide();
-        $('#player').show()
-    });
+    
     
     $('#player').hide().each(function(){
         if( !!document.createElement('audio').canPlayType ){
