@@ -16,9 +16,10 @@ jQuery(document).ready(function() {
             $('audio').children('source').remove();
             $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
             $('#menu').hide();
-            $('#player').show()
+            $('#player').show();
         });
         $('#menu').append($('<a class="button right" href="javascript:void(0)">Start</a>').on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); }));
+        $('#ctrls').prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>').on('click', function(){ $('#player').hide(); $('#menu').show(); }));
     });
     
     

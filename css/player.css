@@ -16,9 +16,9 @@ ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
 
 .right { float:right; }
-.button { background:#34556a; border-radius:41px; color:#fff; display:inline-block; height:82px; font-size:125%; line-height:2.6em; margin:0 0 10px; text-align:center; text-decoration:none; width:82px; }
-.button:hover { background:#587a8e; }
-.menu.button { border-radius:0; font-size:100%; height:auto; text-align:left; margin:0 0 20px; text-indent:40px; vertical-align:middle; width:100%; }
+.button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 10px; text-decoration:none; text-indent:-1000px; width:84px; }
+.button:hover { background-color:#587a8e; }
+.menu.button { background-image:none; border-radius:0; height:auto; margin:0 0 20px; padding:25px 0; text-indent:40px; vertical-align:middle; width:100%; }
 
 #pane { background:#fff; margin:0 auto; padding:30px 0 0; width:600px; position:relative; }
 
@@ -29,8 +29,12 @@ li { margin:0 0 0.5em; }
 #prog { height:1px; background:#999999; position:absolute; top:19px; left:0; right:84px; }
 #progknob { background:#34556a; height:40px; width:10px; margin:-20px 0  0 -5px; position:absolute; }
 #ctrls { position:absolute; bottom:0; }
-#volbg { background:#d1cccc; border:3px solid #36424a; border-radius:41px; display:inline-block; height:76px; width:205px; position:relative; top:31px; }
-#vol { position:absolute; left:38px; right:38px; }
-#volknob { margin:-3px 0 0 -41px; position:absolute; }
+#volbg { background:#d1cccc; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -61px; width:205px; position:relative; }
+#vol { position:absolute; left:39px; right:39px; }
+#volknob { background-position:-336px 50%; margin:-3px 0 0 -42px; position:absolute; }
+#list { background-position:-84px 50%; }
+#play { background-position:-168px 50%; }
+#play.playing { background-position:-252px 50%; }
+#next { background-position:-420px 50%; }
 
 #timeout>img { height:auto; width:100%; position:absolute; top:0; left:0; z-index:1; }
