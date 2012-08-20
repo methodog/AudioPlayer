@@ -1,8 +1,7 @@
 body { background:#36424a; color:#36424a; font:24px/1.184 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; }
 img { vertical-align:bottom; }
 p, ol, ul { margin-bottom:1em; }
-a { color:#292728; text-decoration:underline; }
-a:active { color:#000; text-decoration:none; }
+a { color:#292728; outline:none; text-decoration:underline; }
 h1, h2 { font-size:125%; font-weight:normal; line-height:1.1em; }
 strong { font-weight:500; }
 abbr, acronym { border-bottom:1px dotted #b5b5b5; } 
@@ -16,7 +15,7 @@ ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
 
-.button { background:#34556a; border-radius:41px; color:#fff!important; cursor:pointer; display:inline-block; height:82px; font-size:125%; line-height:78px; text-align:center; text-decoration:none; width:82px; }
+.button { background:#34556a; border-radius:41px; color:#fff; cursor:pointer; display:inline-block; height:82px; font-size:125%; line-height:78px; text-align:center; text-decoration:none; width:82px; }
 .button:hover { background:#587a8e; }
 
 #pane { background:#fff; margin:40px auto 0; width:600px; position:relative; }
