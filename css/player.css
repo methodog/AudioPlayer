@@ -1,11 +1,11 @@
-body { background:#36424a; color:#36424a; font:24px/1.184 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; }
+body { background:#36424a; color:#36424a; font:24px/1.184 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; margin:0; }
 img { vertical-align:bottom; }
 p, ol, ul { margin-bottom:1em; }
 a { color:#292728; cursor:pointer; outline:none; text-decoration:underline; }
-h1, h2 { font-size:125%; font-weight:normal; line-height:1.1em; }
+h1, h2 { font-size:125%; font-weight:normal; line-height:1.1em; margin:0 0 30px; }
 strong { font-weight:500; }
 abbr, acronym { border-bottom:1px dotted #b5b5b5; } 
-em { font-style:italic; }
+em, i { font-style:italic; }
 small, sub, sup { font-size:85%; }
 sub, sup { position:relative; vertical-align:baseline; }
 sub { bottom:-0.3em; }
@@ -15,20 +15,20 @@ ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
 
-.button { background:#34556a; border-radius:41px; color:#fff; display:inline-block; height:82px; font-size:125%; line-height:78px; text-align:center; text-decoration:none; width:82px; }
+.button { background:#34556a; border-radius:41px; color:#fff; display:inline-block; height:82px; font-size:125%; line-height:2.6em; text-align:center; text-decoration:none; width:82px; }
 .button:hover { background:#587a8e; }
 
-#pane { background:#fff; margin:40px auto 0; width:600px; position:relative; }
+#pane { background:#fff; margin:0 auto; padding:30px 0 0; width:600px; position:relative; }
 
 #menu { margin:0 auto; width:500px; }
-#menu>.button { border-radius:0; height:auto; margin:0 0 20px; text-align:left; text-indent:40px; vertical-align:middle; width:100%; }
+#menu>.button { border-radius:0; font-size:100%; height:auto; margin:0 0 20px; text-align:left; text-indent:40px; vertical-align:middle; width:100%; }
 
 #player { height:140px; margin:0 auto; width:98%; position:relative; }
 #time { font-size:30px; position:absolute; top:-10px; right:0; }
-#prog { height:1px; background:#9b9b9b; position:absolute; top:19px; left:0; right:84px; }
+#prog { height:1px; background:#999999; position:absolute; top:19px; left:0; right:84px; }
 #progknob { background:#34556a; height:40px; width:10px; margin:-20px 0  0 -5px; position:absolute; }
 #ctrls { position:absolute; bottom:0; }
-#volbg { background:#d1cfcc; border:3px solid #34556a; border-radius:41px; display:inline-block; height:76px; width:205px; position:relative; top:31px; }
+#volbg { background:#d1cccc; border:3px solid #36424a; border-radius:41px; display:inline-block; height:76px; width:205px; position:relative; top:31px; }
 #vol { position:absolute; left:38px; right:38px; }
 #volknob { margin:-3px 0 0 -41px; position:absolute; }
 
