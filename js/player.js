@@ -6,14 +6,23 @@ jQuery(document).ready(function() {
             $link = $menu.children('home').children('link');
         $('#menu').append('<h1>'+header+'</h1>');
         $link.each(function(){
-            var track = $(this).text(),
-                $xml = $menu.children(track),
+            var t_id = $(this).text(),
+                $xml = $menu.children(t_id),
                 title = $xml.children('menuname').text(),
-                file = $xml.children('video').text();
-            $('#menu').append('<a class="menu button" id="'+track+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
+                file = $xml.children('video').text(),
+                t_title = $xml.children('name').text();
+            $('#menu').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
+            $.get(file+'.xml', function(t_xml){
+                var $t_paras = $(t_xml).find('p'), t_html = '';
+                $t_paras.each(function(){
+                    t_html += '<p data-t0="'+$(this).attr('begin')+'">'+$(this).text()+'</p>';
+                });
+                $('#transcript').append('<div class="'+t_id+'"><h2>'+t_title+'</h2>'+t_html+'</div>');
+            });
         });
         $('#menu').on('click', '.menu.button', function(){
-            var file = $(this).data('file');
+            var file = $(this).data('file'),
+                t_id = this.id;
             $('#menu').children('a.menu.button').removeClass('playing');
             $(this).addClass('playing');
             $('audio').children('source').remove();
@@ -21,6 +30,8 @@ jQuery(document).ready(function() {
             $('audio').get(0).load();
             $('audio').get(0).play();
             $('#menu').hide();
+            $('#transcript>div').hide();
+            $('#transcript>.'+t_id).show();
             $('#track').show();
         });
         $('#menu')
@@ -39,9 +50,7 @@ jQuery(document).ready(function() {
                 })
             );
     });
-    
-    
-    
+        
     $('#player').each(function(){
         if( !!document.createElement('audio').canPlayType ){
             var audio = $('audio').get(0), 
