@@ -17,7 +17,7 @@ li { margin:0 0 0.5em; }
 
 .right { float:right; }
 .button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 10px; text-decoration:none; text-indent:-1000px; width:84px; }
-.button:hover { background-color:#587a8e; }
+.button:hover, #progknob:hover { background-color:#587a8e; }
 .menu.button { background-image:none; border-radius:0; height:auto; margin:0 0 20px; padding:25px 0; text-indent:40px; vertical-align:middle; width:100%; }
 
 #pane { background:#fff; margin:0 auto; padding:30px 0 0; width:600px; position:relative; }
@@ -26,9 +26,9 @@ li { margin:0 0 0.5em; }
 #track { display:none;  }
 
 #player { height:150px; margin:0 auto; width:98%; position:relative; }
-#time { font-size:30px; position:absolute; top:-10px; right:0; }
-#prog { height:1px; background:#999999; position:absolute; top:19px; left:0; right:84px; }
+#prog { height:1px; background:#999999; margin:20px 0; position:absolute; left:0; right:84px; }
 #progknob { background:#34556a; height:40px; width:10px; margin:-20px 0  0 -5px; position:absolute; }
+#time { font-size:25px; margin-top:2px; position:absolute; right:0; }
 #ctrls { position:absolute; bottom:0; }
 #volbg { background:#d1cccc; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -61px; width:205px; position:relative; }
 #vol { position:absolute; left:39px; right:39px; }
