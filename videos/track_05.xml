@@ -1,16 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1"  
-xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
-<head>
-<styling>
-<style id="1" tts:textAlign="right"/>
-<style id="2" tts:color="transparent"/>
-<style id="3" style="2" tts:backgroundColor="white"/>
-<style id="4" style="2 3" tts:fontSize="20"/>
-</styling>
-</head>
-<body>
-<div xml:lang="en">
+<?xml version="1.0"?>
+
 <p begin="0:00:00" dur="00:00:13.00">Several sculptures in this room depict images of the dead Christ. They were meant to elicit feelings of pity and sorrow in everyone who saw them — a reminder of Christ’s sacrifice for humanity.</p>
 <p begin="0:00:13" dur="00:00:11.00">This song also focuses on the intense emotions surrounding the death of Jesus. Its lyrics are quite graphic describing the body of Christ hanging on the cross:</p>
 <p begin="0:00:24" dur="00:00:09.00">‘to free us from original sin&lt;br&gt;And to save us from damnation&lt;br&gt;He hangs, as you can see, upon the hard wood…’</p>
@@ -19,7 +8,4 @@ xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
 <p begin="0:01:09" dur="00:01:51.00">Translation:&lt;br&gt;&lt;br&gt;If ever in wonder raising your face&lt;br&gt;To the clear sky you think, o blind people&lt;br&gt;Of that true lord of paradise&lt;br&gt;&lt;br&gt;Turn your eyes over here, that is presented to you&lt;br&gt;Not that form oh my not that pain&lt;br&gt;That will contemplate knots of laments</p>
 <p begin="0:03:00" dur="00:01:40.00">Weep for the great sorrow of the world&lt;br&gt;Weep for the bitter death and the cruel suffering&lt;br&gt;If the spirit of compassion pierces your heart&lt;br&gt;&lt;br&gt;To liberate us from the ancient deception</p>
 <p begin="0:04:40" dur="00:01:16.00">He hangs as you see on the hard wood&lt;br&gt;And to save us from perpetual damnation.&lt;br&gt;&lt;br&gt;This recording was made by the Royal College of Music and was supported by an award from the Arts and Humanities Research Council.
-</p>
-</div>    
-</body>
-</tt>
+

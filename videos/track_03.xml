@@ -1,16 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1"  
-xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
-<head>
-<styling>
-<style id="1" tts:textAlign="right"/>
-<style id="2" tts:color="transparent"/>
-<style id="3" style="2" tts:backgroundColor="white"/>
-<style id="4" style="2 3" tts:fontSize="20"/>
-</styling>
-</head>
-<body>
-<div xml:lang="en">
+<?xml version="1.0"?>
+
 <p begin="0:00:00" dur="00:00:16.00">Suspended above this audio point is a vaulted ceiling decorated with scenes painted in fresco on plaster. The term ‘fresco’ means that images were painted directly onto fresh plaster.  The pigments combined with the plaster, fixing the image.</p>
 <p begin="0:00:16" dur="00:00:17.00">This ceiling once spanned a small square chamber in Cremona, in Northern Italy and was painted in about 1500 by a local artist, Alessandro Pampurino.  It is slightly over 4 metres, or 12 feet, in diameter and shaped like an umbrella.</p>
 <p begin="0:00:33" dur="00:00:14.00">It’s divided into eight panels, each occupied by a circular medallion containing a painting of one of the female Muses of classical mythology. The Muses are painted to look like classical sculpture.</p>
@@ -21,10 +10,4 @@ xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
 <p begin="0:02:12" dur="00:00:15.00">Erato, Muse of Love Poetry, with a tambourine; Terpsichore, Muse of Dance and Song, playing a viol; and finally Urania, Muse of Astronomy.  She carries a compass and holds a globe aloft in her left hand.</p>
 <p begin="0:02:27" dur="00:00:19.00">Semi-circular spaces beneath the panels are filled by ten lunettes – half-moon shaped panels.  Two larger lunettes opposite one another are painted with pictures of Apollo, the god of Poetry and Music, and Calliope, the Muse of Epic Poetry, who blows a long trumpet.</p>
 <p begin="0:02:46" dur="00:00:10.00">The others depict the heads of six Roman emperors and two of their womenfolk, set in pairs facing each other in profile. Their identities, however, are not certain.</p>
-<p begin="0:02:56" dur="00:00:17.00">Although small, the room this ceiling adorned was clearly important. With its fashionable decoration and its references to the arts, it was used by a select few for private, intellectual pursuits – reading, discussion and perhaps the performance of music.&lt;br&gt;
-&lt;br&gt;
-Supported by The Band Trust.
-</p>
-</div>    
-</body>
-</tt>
+<p begin="0:02:56" dur="00:00:17.00">Although small, the room this ceiling adorned was clearly important. With its fashionable decoration and its references to the arts, it was used by a select few for private, intellectual pursuits – reading, discussion and perhaps the performance of music.&lt;br&gt;&lt;br&gt; Supported by The Band Trust.</p>

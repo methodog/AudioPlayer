@@ -1,16 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1"  
-xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
-<head>
-<styling>
-<style id="1" tts:textAlign="right"/>
-<style id="2" tts:color="transparent"/>
-<style id="3" style="2" tts:backgroundColor="white"/>
-<style id="4" style="2 3" tts:fontSize="20"/>
-</styling>
-</head>
-<body>
-<div xml:lang="en">
+<?xml version="1.0"?>
+
 <p begin="0:00:00" dur="00:00:19.00">&lt;br&gt;The white marble panel on the wall in front of this audio point dates from about 1428 to 1430 and was made in Florence.  It shows Christ ascending in majesty, giving the keys of the Kingdom of Heaven to St Peter, as the Virgin Mary and the apostles look on in wonder, awe and grief. </p>
 <p begin="0:00:19" dur="00:00:19.00">&lt;br&gt;The rectangular panel is almost half a metre, or 18 inches, high and a little over a metre, or 3 feet, wide. The panel shows one of the finest examples of the technique of carving in rilievo schiacciato, or ‘squashed relief,’ by Donatello, the sculptor who’s credited with inventing it.</p>
 <p begin="0:00:38" dur="00:00:22.00">&lt;br&gt;The figure of Christ dominates the centre of the panel. He appears to be hovering within a mandorla, an almond-shape made up of clouds, and is surrounded by four small angels.  To Christ’s right, the stocky, bearded figure of St Peter reaches up to accept the keys to Heaven. To Christ’s left is his mother, Mary.</p>
@@ -21,6 +10,3 @@ xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
 <p begin="0:02:22" dur="00:00:13.00">&lt;br&gt;The main figures are carved in a relief of no more than two centimetres in depth, but the drapery of their cloaks and the detail of their faces are magnificently carved to suggest fully three-dimensional forms. </p>
 <p begin="0:02:35" dur="00:00:14.00">&lt;br&gt;Donatello’s technical genius is shown in the way he uses ever-shallower relief to suggest an extreme depth of perspective. A pair of angels stands to the far left of the panel, their arms around each other.</p>
 <p begin="0:02:49" dur="00:03:10.00">&lt;br&gt;By carving them smaller and in a lower relief than the apostles and Christ, Donatello suggests that they are behind the main group. A line of trees stands on rolling hills behind these angels, diminishing in size and becoming fainter as they recede towards the horizon, where the tiny city of Jerusalem is lightly sketched.&lt;br&gt;&lt;br&gt;Supported by The Band Trust.</p>
-</div>    
-</body>
-</tt>
