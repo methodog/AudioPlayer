@@ -16,15 +16,24 @@ jQuery(document).ready(function() {
             $('audio').children('source').remove();
             $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
             $('#menu').hide();
-            $('#player').show();
+            $('#track').show();
         });
-        $('#menu').append($('<a class="button right" href="javascript:void(0)">Start</a>').on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); }));
-        $('#ctrls').prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>').on('click', function(){ $('#player').hide(); $('#menu').show(); }));
+        $('#menu')
+            .append($('<a class="button right" href="javascript:void(0)">Start</a>')
+                .on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); })
+            );
+        $('#ctrls')
+            .prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
+                .on('click', function(){ $('#track').hide(); $('#menu').show(); })
+            )
+            .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
+                .on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); })
+            );
     });
     
     
     
-    $('#player').hide().each(function(){
+    $('#player').each(function(){
         if( !!document.createElement('audio').canPlayType ){
             var audio = $('audio').get(0), 
                 manualSeek = 0, 
@@ -87,7 +96,9 @@ jQuery(document).ready(function() {
                 var to = this, t;
                 this.init = function(){
                     $(this).show();
-                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){to.flick();}, 4000); }
+                    $('#track').hide();
+                    $('#menu').show();
+                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, 4000); }
                 };
                 this.flick = function(){
                     $(this).append($(this).children(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
@@ -96,7 +107,7 @@ jQuery(document).ready(function() {
                 this.reset = function(){
                     clearTimeout(t);
                     $(this).hide();
-                    t = setTimeout(function(){ to.init(); }, 80000);
+                    t = setTimeout(function(){ to.init(); }, 4000);
                 };
                 $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); });
                 $('html, a').css({'cursor':'none'});
