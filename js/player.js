@@ -15,6 +15,7 @@ jQuery(document).ready(function() {
             var file = $(this).data('file');
             $('audio').children('source').remove();
             $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+            $('audio').get(0).load();
             $('#menu').hide();
             $('#track').show();
         });
