@@ -14,13 +14,14 @@ jQuery(document).ready(function() {
         });
         $('#menu').on('click', '.menu.button', function(){
             var file = $(this).data('file');
+            $('#menu').children('a.menu.button').removeClass('playing');
+            $(this).addClass('playing');
             $('audio').children('source').remove();
             $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
             $('audio').get(0).load();
+            $('audio').get(0).play();
             $('#menu').hide();
             $('#track').show();
-            $('#menu').children('a.menu.button').removeClass('playing');
-            $(this).addClass('playing');
         });
         $('#menu')
             .append($('<a class="button right" href="javascript:void(0)">Start</a>')
@@ -28,7 +29,7 @@ jQuery(document).ready(function() {
             );
         $('#ctrls')
             .prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
-                .on('click', function(){ $('#track').hide(); $('#menu').show(); })
+                .on('click', function(){ $('audio').get(0).pause(); $('#track').hide(); $('#menu').show(); })
             )
             .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
                 .on('click', function(){ 
@@ -64,9 +65,7 @@ jQuery(document).ready(function() {
                 $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
             }).on('timeupdate', function(){
                 var pos = (audio.currentTime/audio.duration)*100;
-                if( !manualSeek ){
-                    $('#progknob').css({left:pos+'%'});
-                }
+                if( !manualSeek ){ $('#progknob').css({left:pos+'%'}); }
                 $('#prog').slider({
                     step:0.01,
                     max:audio.duration,
@@ -79,7 +78,7 @@ jQuery(document).ready(function() {
                         audio.currentTime = ui.value;
                     }
                 });
-            }).on('play',function(){
+            }).on('play',function(){ 
                 $('#play').addClass('playing');
             }).on('pause ended', function(){
                 $('#play').removeClass('playing');
