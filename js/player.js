@@ -6,10 +6,11 @@ jQuery(document).ready(function() {
             $link = $menu.children('home').children('link');
         $('#menu').append('<h1>'+header+'</h1>');
         $link.each(function(){
-            var $track = $menu.children($(this).text()),
-                title = $track.children('menuname').text(),
-                file = $track.children('video').text();
-            $('#menu').append('<a class="menu button" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
+            var track = $(this).text(),
+                $xml = $menu.children(track),
+                title = $xml.children('menuname').text(),
+                file = $xml.children('video').text();
+            $('#menu').append('<a class="menu button" id="'+track+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
         });
         $('#menu').on('click', '.menu.button', function(){
             var file = $(this).data('file');
@@ -18,6 +19,8 @@ jQuery(document).ready(function() {
             $('audio').get(0).load();
             $('#menu').hide();
             $('#track').show();
+            $('#menu').children('a.menu.button').removeClass('playing');
+            $(this).addClass('playing');
         });
         $('#menu')
             .append($('<a class="button right" href="javascript:void(0)">Start</a>')
@@ -28,7 +31,11 @@ jQuery(document).ready(function() {
                 .on('click', function(){ $('#track').hide(); $('#menu').show(); })
             )
             .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
-                .on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); })
+                .on('click', function(){ 
+                    if( $('#menu').children('a.menu.button').last().hasClass('playing') ){
+                        $('#menu').children('a.menu.button').first().trigger('click'); 
+                    }else{ $('#menu').children('a.menu.button.playing').next('.menu.button').trigger('click'); }
+                })
             );
     });
     
