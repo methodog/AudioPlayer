@@ -93,21 +93,22 @@ jQuery(document).ready(function() {
                 $('#timeout').append('<img src="./timeout/'+$(this).text()+'" title="Click to begin" alt=""/>');
             });
             $('#timeout').each(function(){
-                var to = this, t;
+                var to = this, t, 
+                    e = 4000, d = 80000;
                 this.init = function(){
                     $(this).show();
                     $('#track').hide();
                     $('#menu').show();
-                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, 4000); }
+                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
                 };
                 this.flick = function(){
                     $(this).append($(this).children(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
-                    t = setTimeout(function(){ to.flick(); }, 4000);
+                    t = setTimeout(function(){ to.flick(); }, e);
                 };
                 this.reset = function(){
                     clearTimeout(t);
                     $(this).hide();
-                    t = setTimeout(function(){ to.init(); }, 4000);
+                    t = setTimeout(function(){ to.init(); }, d);
                 };
                 $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); });
                 $('html, a').css({'cursor':'none'});
