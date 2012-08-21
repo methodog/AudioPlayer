@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
                     t_html += '<p data-t0="'+$(this).attr('begin')+'">'+$(this).text()+'</p>';
                 });
                 $('#transcript').append('<div class="'+t_id+'"><h2>'+t_title+'</h2>'+t_html+'</div>');
-            });
+            },'html');
         });
         $('#menu').on('click', '.menu.button', function(){
             var file = $(this).data('file'),
