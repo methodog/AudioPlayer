@@ -26,13 +26,11 @@ jQuery(document).ready(function() {
             $('#menu').children('a.menu.button').removeClass('playing');
             $(this).addClass('playing');
             $('audio').children('source').remove();
-            $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
-            $('audio').get(0).load();
-            $('audio').get(0).play();
+            $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>').get(0).load();
             $('#menu').hide();
-            $('#transcript>div').hide();
-            $('#transcript>.'+t_id).show();
+            $('#transcript>div').hide().filter('.'+t_id).show();
             $('#track').show();
+            $('#play').trigger('click');
         });
         $('#menu')
             .append($('<a class="button right" href="javascript:void(0)">Start</a>')
@@ -60,23 +58,27 @@ jQuery(document).ready(function() {
             $('#vol').slider({ min:0.4, max:1, step:0.01, value:vol, animate:true, 
                 slide:function(e,ui){ audio.volume = ui.value; }
             });
+            $('#prog').slider({ step:0.01, max:audio.duration, animate:true, 
+                slide:function(){ manualSeek = true; },
+                stop:function(e,ui){ manualSeek = false; audio.currentTime = ui.value; }
+            });
             $(audio)
-            .on('loadeddata', function(){
-                var t = parseInt(audio.duration,10),
-                    m = Math.floor(t/60,10),
-                    s = t-m*60;
-                $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
-            })
-            .on('timeupdate', function(){
-                var pos = (audio.currentTime/audio.duration)*100;
-                if( !manualSeek ){ $('#progknob').css({left:pos+'%'}); }
-                $('#prog').slider({ step:0.01, max:audio.duration, animate:true, 
-                    slide:function(){ manualSeek = true; },
-                    stop:function(e,ui){ manualSeek = false; audio.currentTime = ui.value; }
-                });
-            })
-            .on('play', function(){ $('#play').addClass('playing'); })
-            .on('pause ended', function(){ $('#play').removeClass('playing'); })
+                .on('loadeddata', function(){
+                    var t = parseInt(audio.duration,10),
+                        m = Math.floor(t/60,10),
+                        s = t-m*60;
+                    $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
+                })
+                .on('durationchange', function(){
+                    $('#prog').slider({ max:audio.duration });
+                })
+                .on('timeupdate', function(){
+                    var t = audio.currentTime,
+                        pos = (t/audio.duration)*100;
+                    if( !manualSeek ){ $('#progknob').css({left:pos+'%'}); }
+                })
+                .on('play', function(){ $('#play').addClass('playing'); })
+                .on('pause ended', function(){ $('#play').removeClass('playing'); })
             ;		
             $('#play').click(function(){ if( audio.paused ){ audio.play(); }else{ audio.pause(); } });
         }else{
