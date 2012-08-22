@@ -51,13 +51,19 @@ jQuery(document).ready(function() {
         
     $('#player').each(function(){
         if( !!document.createElement('audio').canPlayType ){
-            var audio = $('audio').get(0), 
-                manualSeek = 0, 
+            var audio = $('audio').get(0),
+                manualSeek = 0,
                 vol = 0.7;
-            audio.volume = vol;
-            $('#vol').slider({ min:0.4, max:1, step:0.01, value:vol, animate:true, 
-                slide:function(e,ui){ audio.volume = ui.value; }
-            });
+            this.reset = function(){
+                audio.pause(); 
+                audio.volume = vol;
+                $('#track').hide(); 
+                $('#menu').show();
+                $('#vol').slider({ min:0.4, max:1, step:0.01, value:vol, animate:true, 
+                    slide:function(e,ui){ audio.volume = ui.value; }
+                });
+            };
+            this.reset();
             $('#prog').slider({ step:0.01, max:audio.duration, animate:true, 
                 slide:function(){ manualSeek = true; },
                 stop:function(e,ui){ manualSeek = false; audio.currentTime = ui.value; }
@@ -98,8 +104,7 @@ jQuery(document).ready(function() {
                     e = 4000, d = 80000;
                 this.init = function(){
                     $(this).show();
-                    $('#track').hide();
-                    $('#menu').show();
+                    $('#player').get(0).reset();
                     if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
                 };
                 this.flick = function(){
