@@ -3,7 +3,8 @@ jQuery(document).ready(function() {
     $.get('./site.xml', function(xml){
         var $menu = $(xml).children('site'),
             header = $menu.children('home').children('name').text(),
-            $link = $menu.children('home').children('link');
+            $link = $menu.children('home').children('link'),
+            audio = $('audio').get(0);
         $('#menu').append('<h1>'+header+'</h1>');
         $link.each(function(){
             var t_id = $(this).text(),
@@ -25,8 +26,9 @@ jQuery(document).ready(function() {
                 t_id = this.id;
             $('#menu').children('a.menu.button').removeClass('playing');
             $(this).addClass('playing');
-            $('audio').children('source').remove();
-            $('audio').append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>').get(0).load();
+            $(audio).children('source').remove();
+            $(audio).append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+            audio.load();
             $('#menu').hide();
             $('#transcript>div').hide().filter('.'+t_id).show();
             $('#track').show();
@@ -38,7 +40,7 @@ jQuery(document).ready(function() {
             );
         $('#ctrls')
             .prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
-                .on('click', function(){ $('audio').get(0).pause(); $('#track').hide(); $('#menu').show(); })
+                .on('click', function(){ audio.pause(); $('#track').hide(); $('#menu').show(); })
             )
             .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
                 .on('click', function(){ 
