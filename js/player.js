@@ -99,7 +99,7 @@ jQuery(document).ready(function() {
         var $img = $(xml).children('timeout').children('image');
         if( $img.length>0 ){
             $img.each(function(){
-                $('#timeout').append('<img src="./timeout/'+$(this).text()+'" title="Click to begin" alt=""/>');
+                $('#timeout').append($('<img src="./timeout/'+$(this).text()+'" title="Click to begin" alt=""/>').on('error', function(){ $(this).remove(); }));
             });
             $('#timeout').each(function(){
                 var to = this, t, 
