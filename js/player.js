@@ -14,17 +14,22 @@ jQuery(document).ready(function() {
                 t_title = $xml.children('name').text();
             $('#menu').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
             $.get(file+'.xml', function(t_xml){
-                var $t_paras = $(t_xml).find('p'), t_html = '';
-                $t_paras.each(function(){
-                    t_html += '<p data-t0="'+$(this).attr('begin')+'">'+$(this).text()+'</p>';
+                var $t_parts = $(t_xml).find('p'), 
+                    t_html = '',
+                    t_t = [];
+                $t_parts.each(function(){
+                    var t = $(this).attr('begin').split(':').reverse(), s = 0;
+                    for(var i=0; i<t.length; ++i){ s += i==0? parseInt(t[i]):parseInt(t[i]*60*i); }
+                    t_t.push(s);
+                    t_html += '<p class="'+s+'">'+$(this).text()+'</p>';
                 });
-                $('#transcript').append('<div class="'+t_id+'"><h2>'+t_title+'</h2>'+t_html+'</div>');
+                $('#transcript').append('<div class="'+t_id+'" data-times="'+t_t.join()+'"><h2>'+t_title+'</h2>'+t_html+'</div>');
             },'html');
         });
         $('#menu').on('click', '.menu.button', function(){
             var file = $(this).data('file'),
                 t_id = this.id;
-            $('#menu').children('a.menu.button').removeClass('playing');
+            $('a.menu.button').removeClass('playing');
             $(this).addClass('playing');
             $(audio).children('source').remove();
             $(audio).append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
@@ -36,7 +41,7 @@ jQuery(document).ready(function() {
         });
         $('#menu')
             .append($('<a class="button right" href="javascript:void(0)">Start</a>')
-                .on('click', function(){ $('#menu').children('a.menu.button').first().trigger('click'); })
+                .on('click', function(){ $('a.menu.button').first().trigger('click'); })
             );
         $('#ctrls')
             .prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
@@ -44,9 +49,9 @@ jQuery(document).ready(function() {
             )
             .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
                 .on('click', function(){ 
-                    if( $('#menu').children('a.menu.button').last().hasClass('playing') ){
-                        $('#menu').children('a.menu.button').first().trigger('click'); 
-                    }else{ $('#menu').children('a.menu.button.playing').next('.menu.button').trigger('click'); }
+                    if( $('a.menu.button').last().hasClass('playing') ){
+                        $('a.menu.button').first().trigger('click'); 
+                    }else{ $('a.menu.button.playing').next('.menu.button').trigger('click'); }
                 })
             );
     });
@@ -82,8 +87,15 @@ jQuery(document).ready(function() {
                 })
                 .on('timeupdate', function(){
                     var t = audio.currentTime,
-                        pos = (t/audio.duration)*100;
+                        pos = (t/audio.duration)*100,
+                        t_t = $('div.'+$('a.menu.button.playing').attr('id')).data('times').split(',');
                     if( !manualSeek ){ $('#progknob').css({left:pos+'%'}); }
+                    for(var s=0; s<t_t.length; ++s){
+                        if( t >= t_t[s] ){
+                            $('#transcript p').hide();
+                            $('p.'+t_t[s]).show();
+                        }
+                    }
                 })
                 .on('play', function(){ $('#play').addClass('playing'); })
                 .on('pause ended', function(){ $('#play').removeClass('playing'); })
