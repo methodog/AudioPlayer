@@ -117,9 +117,13 @@ jQuery(document).ready(function() {
                 var to = this, t, 
                     e = 4000, d = 80000;
                 this.init = function(){
-                    $(this).show();
-                    $('#player').get(0).reset();
-                    if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
+                    if( $('audio').get(0).paused ){
+                        $(this).show();
+                        $('#player').get(0).reset();
+                        if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
+                    }else{
+                        this.reset();
+                    }
                 };
                 this.flick = function(){
                     $(this).append($(this).children(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
