@@ -13,7 +13,7 @@
 	</home>
 
 
-	<!-- the tracks-->
+	<!-- the track details-->
 	<track_01>
 		<menuname>Donatello's &lt;i&gt;Ascension Relief&lt;/i&gt;</menuname>
 		<name>Donatello's &lt;i&gt;Ascension Relief &lt;/i&gt;&lt;br&gt;[with Christ giving the Keys to St. Peter] Enhanced audio description for visually impaired visitors.</name>
@@ -27,7 +27,6 @@
 	</track_02>
 
 	<track_03>
-		<!-- Can the following be in italics?  YES-->
 		<menuname>A Ceiling from Cremona</menuname>
 		<name>A Ceiling from Cremona &lt;br&gt;Enhanced audio description for visually impaired visitors.</name>
 		<video>./videos/track_03</video>
