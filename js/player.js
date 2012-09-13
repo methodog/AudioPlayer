@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
             $('#play').trigger('click');
         });
         $('#menu')
-            .append($('<a class="button right" href="javascript:void(0)">Start</a>')
+            .append($('<a class="button right" id="start" href="javascript:void(0)">Start</a>')
                 .on('click', function(){ $('a.menu.button').first().trigger('click'); })
             );
         $('#ctrls')
