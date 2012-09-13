@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
                 title = $xml.children('menuname').text(),
                 file = $xml.children('video').text(),
                 t_title = $xml.children('name').text();
-            $('#menu').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>');
+            $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>'));
             $.get(file+'.xml', function(t_xml){
                 var $t_parts = $(t_xml).find('p'), 
                     t_html = '',
