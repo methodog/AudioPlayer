@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
                 .on('click', function(){ 
                     if( $('a.menu.button').last().hasClass('playing') ){
                         $('a.menu.button').first().trigger('click'); 
-                    }else{ $('a.menu.button.playing').next('.menu.button').trigger('click'); }
+                    }else{ $('a.menu.button.playing').parent().next().children('.menu.button').trigger('click'); }
                 })
             );
     });
