@@ -10,9 +10,11 @@ jQuery(document).ready(function() {
             var t_id = $(this).text(),
                 $xml = $menu.children(t_id),
                 title = $xml.children('menuname').text(),
+                img = $xml.children('menuimage').text(),
                 file = $xml.children('video').text(),
                 t_title = $xml.children('name').text();
-            $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)">'+title+'</a>'));
+            img = img?img:'css/img/blank.gif';
+            $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)"><img alt="" src="'+img+'"/><span>'+title+'</span></a>'));
             $.get(file+'.xml', function(t_xml){
                 var $t_parts = $(t_xml).find('p'), 
                     t_html = '',

@@ -3,7 +3,7 @@ AudioPoint Content
 ==================
 
 Content is defined and contained in different areas, as defined by the legacy Flash system, in order to maintain backwards compatibility. 
-Though this newer application will still work with all of the prexisiting XML content files, a more lightweight version of each file can be used going forward, as detailed below.
+Though this newer application will still work with all of the pre-existing XML content files, a more lightweight version of each file can be used going forward, as detailed below.
 
 Whether modifying or creating a new AudioPoint, please start with an existing version of each XML content file, as supplied. 
 
@@ -11,7 +11,11 @@ Whether modifying or creating a new AudioPoint, please start with an existing ve
     The file site.xml sets the title of the audio point and defines the menu of options.
     Within the <menu> section, the main title of the AudioPoint is defined in <name>, followed by an index listing of the tracks for that AudioPoint each named as a <link>.
     The name you chose to identify each track can be arbitrary, but must correspond to a tag defined by the same name, below the <menu> section, e.g. <link>track_01</link> has a corresponding <track_01> tag below.
-    Within each of these track tags, e.g. <track_01>, <menuname> defines the label of the menu button for that track; <name> defines the heading for that track as displayed above its transcript; <video> defines the path and identifyer for the track's corrsponding family of audio and transcript files, e.g. "./video/track_01" points to all files named track_01.* in the video folder.
+    Within each of these track tags, e.g. <track_01>, 
+    * <menuname> defines the label of the menu button for that track; 
+    * <name> defines the heading for that track as displayed above its transcript; 
+    * <video> defines the path and identifier for the track's corresponding family of audio and transcript files, e.g. "./video/track_01" points to all files named track_01.* in the video folder;
+    * <menuimage> defines the path and filename for an image (e.g. of the curator) to be displayed at the left end of the menu button for each track.
     
 ## videos/
     Keeping its name from the legacy system, the videos folder contains all of the audio files, together with a corresponding textual transcript file for each track, e.g. track_01.xml (see below).

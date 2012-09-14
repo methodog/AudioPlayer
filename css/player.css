@@ -18,7 +18,9 @@ li { margin:0 0 0.5em; }
 .right { float:right; }
 .button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 19px; text-decoration:none; text-indent:-9999px; width:84px; }
 .button:hover, #progknob:hover { background-color:#587a8e; }
-.menu.button { background-image:none; border-radius:0; display:table-cell; height:80px; line-height:1em; padding:0 30px 0 40px; text-indent:0; vertical-align:middle; width:430px; }
+.menu.button { background-image:none; border-radius:0; display:table-row; height:80px; line-height:1em; text-indent:0; width:100%; }
+.menu.button>img { height:80px; width:auto; }
+.menu.button>span { display:table-cell; padding:0 15px; vertical-align:middle; width:100%; }
 
 #pane { background:#fff; height:760px; margin:0 auto; padding:40px 0 0; width:600px; }
 #menu, #track { height:100%; margin:0 auto; width:500px; position:relative; }
