@@ -6,7 +6,7 @@ h1, h2 { font-size:125%; font-weight:normal; line-height:1.18em; margin:0 0 40px
 strong { font-weight:500; }
 abbr, acronym { border-bottom:1px dotted #b5b5b5; } 
 em, i { font-style:italic; }
-small, sub, sup { font-size:85%; }
+small, sub, sup { display:inline-block; font-size:75%; line-height:1em; }
 sub, sup { position:relative; vertical-align:baseline; }
 sub { bottom:-0.3em; }
 sup { top:-0.3em; }

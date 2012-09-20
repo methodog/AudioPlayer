@@ -29,10 +29,9 @@
 	</track_02>
 
 	<track_03>
-		<menuname>A Ceiling from Cremona</menuname>
+		<menuname>&lt;sup&gt;Curator credit&lt;/sup&gt;&lt;br&gt;A Ceiling from Cremona</menuname>
 		<name>A Ceiling from Cremona &lt;br&gt;Enhanced audio description for visually impaired visitors.</name>
 		<video>./videos/track_03</video>
-        <menuimage>./videos/curator.jpg</menuimage>
 	</track_03>
 	
 	<track_04>

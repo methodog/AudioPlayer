@@ -1,6 +1,4 @@
-==================
-AudioPoint Content
-==================
+# AudioPoint Content
 
 Content is defined and contained in different areas, as defined by the legacy Flash system, in order to maintain backwards compatibility. 
 Though this newer application will still work with all of the pre-existing XML content files, a more lightweight version of each file can be used going forward, as detailed below.
@@ -37,11 +35,12 @@ N.B. When inserting any basic HTML formatting tags into textual fields within th
 < = &lt;
 > = &gt;
 so that <i>something in italics</i> becomes &lt;i&gt;something in italics&lt;/i&gt;
+e.g. to add a curator credit as a line of smaller text to a menu button, you could add the following HTML to the start of the <menuname> field in site.xml:
+&lt;sup&gt;Curator credit&lt;/sup&gt;&lt;br&gt; 
+which becomes <sup>Curator credit</sup><br>
 
 
-=================
-AudioPoint Styles
-=================
+# AudioPoint Styles
 
 Each of the different colours used for the AudioPoint can be found, and changed within css/player.css
 Colours in the CSS file are defined in the usual way by their hex code, and can be easily spotted by their leading # symbol.
