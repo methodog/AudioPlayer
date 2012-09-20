@@ -1,20 +1,21 @@
 jQuery(document).ready(function() {
 
     $.get('./site.xml', function(xml){
-        var $menu = $(xml).children('site'),
-            header = $menu.children('home').children('name').text(),
-            $link = $menu.children('home').children('link'),
+        var $site = $(xml).children('site'),
+            header = $site.children('home').children('name').text(),
+            $link = $site.children('home').children('link'),
+            imgs = $site.find('menuimage').length,
             audio = $('audio').get(0);
         $('#menu').append('<h1>'+header+'</h1>');
         $link.each(function(){
             var t_id = $(this).text(),
-                $xml = $menu.children(t_id),
+                $xml = $site.children(t_id),
                 title = $xml.children('menuname').text(),
                 img = $xml.children('menuimage').text(),
                 file = $xml.children('video').text(),
                 t_title = $xml.children('name').text();
             img = img?img:'css/img/blank.gif';
-            $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)"><img alt="" src="'+img+'"/><span>'+title+'</span></a>'));
+            $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" href="javascript:void(0)"><img alt="" src="'+img+'"'+(imgs?'':' class="none"')+'/><span>'+title+'</span></a>'));
             $.get(file+'.xml', function(t_xml){
                 var $t_parts = $(t_xml).find('p'), 
                     t_html = '',
