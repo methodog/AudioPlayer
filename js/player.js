@@ -118,7 +118,7 @@ jQuery(document).ready(function() {
             });
             $('#timeout').each(function(){
                 var to = this, t, 
-                    e = 4000, d = 80000;
+                    e = 4000, d = 4000;
                 this.init = function(){
                     if( $('audio').get(0).paused ){
                         $(this).show();
