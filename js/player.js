@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
             header = $site.children('home').children('name').text(),
             $link = $site.children('home').children('link'),
             imgs = $site.find('menuimage').length,
-            audio = $('audio').get(0);
+            audio = $('audio')[0];
         $('#menu').append('<h1>'+header+'</h1>');
         $link.each(function(){
             var t_id = $(this).text(),
@@ -61,7 +61,7 @@ jQuery(document).ready(function() {
         
     $('#player').each(function(){
         if( !!document.createElement('audio').canPlayType ){
-            var audio = $('audio').get(0),
+            var audio = $('audio')[0],
                 manualSeek = 0,
                 vol = 0.7;
             this.reset = function(){
@@ -118,18 +118,18 @@ jQuery(document).ready(function() {
             });
             $('#timeout').each(function(){
                 var to = this, t, 
-                    e = 4000, d = 4000;
+                    e = 4000, d = 80000;
                 this.init = function(){
-                    if( $('audio').get(0).paused ){
+                    if( $('audio')[0].paused ){
                         $(this).show();
-                        $('#player').get(0).reset();
+                        $('#player')[0].reset();
                         if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
                     }else{
                         this.reset();
                     }
                 };
                 this.flick = function(){
-                    $(this).append($(this).children(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
+                    $(this).append($(this).find(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
                     t = setTimeout(function(){ to.flick(); }, e);
                 };
                 this.reset = function(){
