@@ -110,6 +110,7 @@ jQuery(document).ready(function() {
         }
     });
     
+    /* timeout screen */
     $.get('./timeout/index.xml', function(xml){
         var $img = $(xml).children('timeout').children('image');
         if( $img.length>0 ){
@@ -118,7 +119,7 @@ jQuery(document).ready(function() {
             });
             $('#timeout').each(function(){
                 var to = this, t, 
-                    e = 4000, d = 80000;
+                    e = 4, d = 120; /* e = slide exposure in secs; d = seconds of inactivity before screen times out */
                 this.init = function(){
                     if( $('audio')[0].paused ){
                         $(this).show();
@@ -130,15 +131,15 @@ jQuery(document).ready(function() {
                 };
                 this.flick = function(){
                     $(this).append($(this).find(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
-                    t = setTimeout(function(){ to.flick(); }, e);
+                    t = setTimeout(function(){ to.flick(); }, e*1000);
                 };
                 this.reset = function(){
                     clearTimeout(t);
                     $(this).hide();
-                    t = setTimeout(function(){ to.init(); }, d);
+                    t = setTimeout(function(){ to.init(); }, d*1000);
                 };
                 $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); });
-                $('html, a').css({'cursor':'none'});
+                if( !!('ontouchstart' in window) ){ $('html, a').css({'cursor':'none'}); }
                 this.init();
             });
         }
