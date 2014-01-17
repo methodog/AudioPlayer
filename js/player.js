@@ -1,5 +1,84 @@
 jQuery(document).ready(function() {
 
+    var slider = {
+        el: null, xy0: null, xyT: null, value: null, 
+        size: function(el){
+            el.wh = [$(el).outerWidth(), $(el).outerHeight()];
+            el.whP = [$(el.P).outerWidth(), $(el.P).outerHeight()];
+        },
+        init: function(el, opt){
+            if( typeof el==='string' ){ el = document.getElementById(el); } if( !el ){ return; }
+            el.P = el.parentNode;
+            slider.size(el);
+            var h = el.whP[0]>el.whP[1]?1:0;
+            if( opt.val ){ if( h ){ el.style.left = (opt.val*el.whP[0]-el.wh[0]/2)+'px'; }else{ el.style.top = (opt.val*el.whP[1]-el.wh[1]/2)+'px'; } } 
+            el.min = !!opt.min? opt.min : 0; 
+            el.max = !!opt.max? opt.max : 1;
+            if( typeof(opt.slide)==='function' ){ el.slide = opt.slide; }
+            if( typeof(opt.stop)==='function' ){ el.stop = opt.stop; }
+            if( !el.move ){
+                el.onmousedown = slider.touch;
+                el.ontouchstart = slider.touch;
+                el.xyO = [0,0];
+                el.move = function(xy){
+                    var x=xy[0], y=xy[1], r;
+                    if( h ){
+                        if( x<=0-el.xyO[0]-el.wh[0]/2 ){ x=0-el.xyO[0]-el.wh[0]/2; r=[-1,0]; }
+                        else if( x>=this.whP[0]-this.wh[0]/2-el.xyO[0] ){ x=this.whP[0]-this.wh[0]/2-el.xyO[0]; r=[1,0]; }
+                        this.style.left = x+'px';
+                        slider.value = this.min+((x+this.wh[0]/2)/this.whP[0]*(this.max-this.min));
+                    }else{
+                        if( y<=0-el.xyO[1]-el.wh[1]/2 ){ y=0-el.xyO[1]-el.wh[1]/2; r=[0,-1]; }
+                        else if( y>=this.whP[1]-this.wh[1]/2-el.xyO[1] ){ y=this.whP[1]-this.wh[1]/2-el.xyO[1]; r=[0,1]; }
+                        this.style.top = y+'px';
+                        slider.value = this.min+((y+this.wh[1]/2)/this.whP[1]*(this.max-this.min));
+                    }
+                    this.xy = [x,y];
+                    return r;
+                };
+            }
+        },
+        touch: function(e){
+            e = e || window.event;
+            slider.el = this;
+            this.xy = [$(this).position().left, $(this).position().top];
+            slider.xy0 = this.xy;
+            slider.xyT = getXY(e);
+            this.className += ' dragged';
+            if( e.type==='touchstart' ){
+                this.ontouchmove = slider.drag;
+                this.onmousedown = null;
+                this.ontouchend = function(){
+                    this.ontouchmove = null;
+                    this.ontouchend = null;
+                    slider.release();
+                };
+            }else{
+                document.onmousemove = slider.drag;
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    slider.release();
+                };
+            }
+            return false;
+        },
+        drag: function(e){
+            e = e || window.event;
+            if( e.preventDefault ){ e.preventDefault(); }else{ e.returnValue=false; }
+            var xyE = getXY(e), 
+                xy = [slider.xy0[0]+xyE[0]-slider.xyT[0], slider.xy0[1]+xyE[1]-slider.xyT[1]];
+            slider.el.move(xy);
+            if( !!slider.el.slide ){ slider.el.slide.call(this); }
+            return false;
+        },
+        release: function(){
+            slider.el.className = slider.el.className.replace(/ dragged/,'');
+            if( !!slider.el.stop ){ slider.el.stop.call(this); }
+            slider.el = null;
+        }
+    };
+
     $.get('./site.xml', function(xml){
         var $site = $(xml).children('site'),
             header = $site.children('home').children('name').text(),
@@ -58,7 +137,7 @@ jQuery(document).ready(function() {
                 })
             );
     });
-        
+
     $('#player').each(function(){
         if( !!document.createElement('audio').canPlayType ){
             var audio = $('audio')[0],
@@ -69,14 +148,14 @@ jQuery(document).ready(function() {
                 audio.volume = vol;
                 $('#track').hide(); 
                 $('#menu').show();
-                $('#vol').slider({ min:0.4, max:1, step:0.01, value:vol, animate:true, 
-                    slide:function(e,ui){ audio.volume = ui.value; }
+                slider.init($('#volknob')[0], { min:0.4, max:1, val:vol, 
+                    slide:function(){ audio.volume = slider.value; }
                 });
             };
             this.reset();
-            $('#prog').slider({ step:0.01, max:audio.duration, animate:true, 
+            slider.init($('#progknob')[0], { max:audio.duration, 
                 slide:function(){ manualSeek = true; },
-                stop:function(e,ui){ manualSeek = false; audio.currentTime = ui.value; }
+                stop:function(){ manualSeek = false; audio.currentTime = slider.value; }
             });
             $(audio)
                 .on('loadeddata', function(){
@@ -86,7 +165,7 @@ jQuery(document).ready(function() {
                     $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
                 })
                 .on('durationchange', function(){
-                    $('#prog').slider({ max:audio.duration });
+                    slider.init($('#progknob')[0], { max:audio.duration });
                 })
                 .on('timeupdate', function(){
                     var t = audio.currentTime,
@@ -146,3 +225,6 @@ jQuery(document).ready(function() {
     });
     
 });
+
+function getXY(e){ var xy=[]; if( e.touches && e.touches.length ){ if( e.touches.length>1 ){ xy[0] = (e.touches[0].pageX+e.touches[0].pageX)/2; xy[1] = (e.touches[0].pageY+e.touches[0].pageY)/2;}else{ xy[0] = e.touches[0].pageX; xy[1] = e.touches[0].pageY; } }else{ xy[0] = e.pageX; xy[1] = e.pageY; } return xy; }
+
