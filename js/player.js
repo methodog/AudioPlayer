@@ -1,3 +1,5 @@
+function getXY(e){ var xy=[]; if( e.touches && e.touches.length ){ if( e.touches.length>1 ){ xy[0] = (e.touches[0].pageX+e.touches[0].pageX)/2; xy[1] = (e.touches[0].pageY+e.touches[0].pageY)/2;}else{ xy[0] = e.touches[0].pageX; xy[1] = e.touches[0].pageY; } }else{ xy[0] = e.pageX; xy[1] = e.pageY; } return xy; }
+
 jQuery(document).ready(function() {
 
     var slider = {
@@ -114,7 +116,8 @@ jQuery(document).ready(function() {
             $('a.menu.button').removeClass('playing');
             $(this).addClass('playing');
             $(audio).children('source').remove();
-            $(audio).append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+            //~ $(audio).append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
+            $(audio).attr("src", 'http://api.soundcloud.com/tracks/129642061/stream?client_id=3b7e5fdb483fa306f91111e992c6443f');
             audio.load();
             $('#menu').hide();
             $('#transcript>div').hide().filter('.'+t_id).show();
@@ -154,8 +157,8 @@ jQuery(document).ready(function() {
             };
             this.reset();
             slider.init($('#progknob')[0], { max:audio.duration, 
-                slide:function(){ manualSeek = true; },
-                stop:function(){ manualSeek = false; audio.currentTime = slider.value; }
+                slide:function(){ manualSeek = 1; },
+                stop:function(){ audio.currentTime = slider.value; manualSeek = 0; }
             });
             $(audio)
                 .on('loadeddata', function(){
@@ -169,9 +172,8 @@ jQuery(document).ready(function() {
                 })
                 .on('timeupdate', function(){
                     var t = audio.currentTime,
-                        pos = (t/audio.duration)*100,
                         t_t = $('div.'+$('a.menu.button.playing').attr('id')).data('times').split(',');
-                    if( !manualSeek ){ $('#progknob').css({left:pos+'%'}); }
+                    if( !manualSeek ){ $('#progknob').css({left:t*100/audio.duration+'%'}); }
                     for(var s=0; s<t_t.length; ++s){
                         if( t >= t_t[s] ){
                             $('#transcript p').hide();
@@ -225,6 +227,4 @@ jQuery(document).ready(function() {
     });
     
 });
-
-function getXY(e){ var xy=[]; if( e.touches && e.touches.length ){ if( e.touches.length>1 ){ xy[0] = (e.touches[0].pageX+e.touches[0].pageX)/2; xy[1] = (e.touches[0].pageY+e.touches[0].pageY)/2;}else{ xy[0] = e.touches[0].pageX; xy[1] = e.touches[0].pageY; } }else{ xy[0] = e.pageX; xy[1] = e.pageY; } return xy; }
 
