@@ -32,10 +32,10 @@ li { margin:0 0 0.5em; }
 #list  { left:-34px; }
 #player { background:#fff; height:165px; margin:0 auto; width:100%; }
 #prog { height:40px; border-bottom:1px solid #999; margin:-20px 0 0; position:absolute; width:85%; }
-#progknob { background:#34556a; height:41px; margin:20px 0 0; width:10px; position:absolute; }
+#progknob { background:#34556a; height:41px; margin:20px 0 0 0; width:10px; position:absolute; }
 #time { font-size:25px; margin-top:-0.2em; position:absolute; right:0; }
 #ctrls { text-align:center; width:100%; }
-#volbg { background:#d1cccc; border:3px solid #36424a; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -55px 23px; width:205px; position:relative; }
+#volbg { background:#d1cccc; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -55px 23px; width:205px; position:relative; }
 #vol { margin:0 39px; width:127px; position:absolute; }
 #volknob { background-position:-336px 50%; margin:-3px 0 0; position:absolute; left:0; }
 #list { background-position:-84px 50%; }
