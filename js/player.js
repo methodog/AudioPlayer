@@ -98,6 +98,7 @@ jQuery(document).ready(function() {
                 t_title = $xml.find('name').text();
             img = img?img:'css/img/blank.gif';
             $('#menu').append($('<p/>').append('<a class="menu button" id="'+t_id+'" data-file="'+file+'" data-media="'+media+'" href="javascript:void(0)"><img alt="" src="'+img+'"'+(imgs?'':' class="none"')+'/><span>'+title+'</span></a>'));
+            $('#transcript').append('<div class="'+t_id+'"><h2>'+t_title+'</h2></div>');
             if( !!transcript ){
                 $.get(transcript, function(t_xml){
                     var $t_parts = $(t_xml).find('p'), 
@@ -109,7 +110,7 @@ jQuery(document).ready(function() {
                         t_t.push(s);
                         t_html += '<p class="'+s+'">'+$(this).text()+'</p>';
                     });
-                    $('#transcript').append('<div class="'+t_id+'" data-times="'+t_t.join()+'"><h2>'+t_title+'</h2>'+t_html+'</div>');
+                    $('#transcript').find('.'+t_id).data('times',t_t.join()).append(t_html);
                 },'html');
             }
         });
