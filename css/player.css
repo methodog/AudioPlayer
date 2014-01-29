@@ -14,6 +14,7 @@ ol, ul { list-style-position:outside; margin-left:2.2em; }
 ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
+video { height:auto; width:100%; position:absolute; bottom:200px; }
 
 .right { float:right; }
 .button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 19px; text-decoration:none; text-indent:-9999px; width:84px; }
@@ -30,7 +31,7 @@ li { margin:0 0 0.5em; }
 #start, #player, #ctrls, #list, #next { position:absolute; bottom:0; }
 #start, #next  { right:-34px; }
 #list  { left:-34px; }
-#player { background:#fff; height:165px; margin:0 auto; width:100%; }
+#player { background:#fff; height:165px; margin:0 auto; width:100%; position:absolute; }
 #prog { height:40px; border-bottom:1px solid #999; margin:-20px 0 0; position:absolute; width:85%; }
 #progknob { background:#34556a; height:41px; margin:20px 0 0 0; width:10px; position:absolute; }
 #time { font-size:25px; margin-top:-0.2em; position:absolute; right:0; }
