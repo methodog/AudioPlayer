@@ -21,17 +21,16 @@ jQuery(document).ready(function() {
             if( !el.move ){
                 el.onmousedown = slider.touch;
                 el.ontouchstart = slider.touch;
-                el.xyO = [0,0];
                 el.move = function(xy){
                     var x=xy[0], y=xy[1], r;
                     if( h ){
-                        if( x<=0-el.xyO[0]-el.wh[0]/2 ){ x=0-el.xyO[0]-el.wh[0]/2; r=[-1,0]; }
-                        else if( x>=this.whP[0]-this.wh[0]/2-el.xyO[0] ){ x=this.whP[0]-this.wh[0]/2-el.xyO[0]; r=[1,0]; }
+                        if( x<=0-el.wh[0]/2 ){ x=0-el.wh[0]/2; r=[-1,0]; }
+                        else if( x>=this.whP[0]-this.wh[0]/2 ){ x=this.whP[0]-this.wh[0]/2; r=[1,0]; }
                         this.style.left = x+'px';
                         slider.value = this.min+((x+this.wh[0]/2)/this.whP[0]*(this.max-this.min));
                     }else{
-                        if( y<=0-el.xyO[1]-el.wh[1]/2 ){ y=0-el.xyO[1]-el.wh[1]/2; r=[0,-1]; }
-                        else if( y>=this.whP[1]-this.wh[1]/2-el.xyO[1] ){ y=this.whP[1]-this.wh[1]/2-el.xyO[1]; r=[0,1]; }
+                        if( y<=0-el.wh[1]/2 ){ y=0-el.wh[1]/2; r=[0,-1]; }
+                        else if( y>=this.whP[1]-this.wh[1]/2 ){ y=this.whP[1]-this.wh[1]/2; r=[0,1]; }
                         this.style.top = y+'px';
                         slider.value = this.min+((y+this.wh[1]/2)/this.whP[1]*(this.max-this.min));
                     }
