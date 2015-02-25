@@ -32,7 +32,7 @@
 	<track_03>
 		<menuname>&lt;sup&gt;Ken Adam&lt;/sup&gt;&lt;br&gt;Culture Shock</menuname>
 		<name>A short Culture Shock film about Ken Adam</name>
-		<video>http://media.vam.ac.uk/media/thira/video/kenadam_culture_shock__480.mp4</video>
+		<video>./videos/kenadam_culture_shock__480.mp4</video>
 	</track_03>
 	
 	<track_04>

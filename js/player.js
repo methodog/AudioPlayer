@@ -122,6 +122,8 @@ jQuery(document).ready(function() {
             $('audio, video').removeAttr('src').find('source').remove();
             if( file.indexOf('http')===0 ){
                 $(media).attr("src", file);
+            }else if( file.indexOf('.mp4')===file.length-4 ){
+                $(media).append('<source src="'+file+'" type="video/mp4"></source>');
             }else{
                 $(media).append('<source src="'+file+'.mp3" type="video/mpeg"></source><source src="'+file+'.ogg" type="video/ogg"></source>');
             }
