@@ -83,10 +83,10 @@ jQuery(document).ready(function() {
     $.get('./site.xml', function(xml){
         var $site = $(xml).find('site'),
             header = $site.find('home').find('name').text(),
-            $link = $site.find('home').find('link'),
+            $links = $site.find('home').find('link'),
             imgs = $site.find('menuimage').length;
         $('#menu').append('<h1>'+header+'</h1>');
-        $link.each(function(){
+        $links.each(function(){
             var t_id = $(this).text(),
                 $xml = $site.find(t_id),
                 title = $xml.find('menuname').text(),
@@ -137,21 +137,24 @@ jQuery(document).ready(function() {
             $('#track').show();
             $('#play').trigger('click');
         });
-        $('#menu')
-            .append($('<a class="button right" id="start" href="javascript:void(0)">Start</a>')
-                .on('click', function(){ $('a.menu.button').first().trigger('click'); })
-            );
-        $('#ctrls')
-            .prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
+        $('#menu').append($('<a class="button right" id="start" href="javascript:void(0)">Start</a>')
+            .on('click', function(){ $('a.menu.button').first().trigger('click'); })
+        );
+        if( $links.length>1 ){
+            $('#ctrls').prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
                 .on('click', function(){ $($('.menu.playing').data('media'))[0].pause(); $('#track').hide(); $('#menu').show(); })
-            )
-            .append($('<a class="button" id="next" href="javascript:void(0)">Next</a>')
-                .on('click', function(){ 
-                    if( $('a.menu.button').last().hasClass('playing') ){
-                        $('a.menu.button').first().trigger('click'); 
-                    }else{ $('a.menu.button.playing').parent().next().find('.menu.button').trigger('click'); }
-                })
             );
+        }
+        $('#ctrls').append($('<a class="button start" id="'+ ($links.length>1?'next':'replay') +'" href="javascript:void(0)">Next</a>')
+            .on('click', function(){ 
+                if( $('a.menu.button').last().hasClass('playing') ){
+                    $('a.menu.button').first().trigger('click'); 
+                }else{ $('a.menu.button.playing').parent().next().find('.menu.button').trigger('click'); }
+            })
+        );
+        if( $links.length===1 ){
+            $('a.menu.button').first().trigger('click');
+        }
     });
 
     $('#player').each(function(){
@@ -242,7 +245,7 @@ jQuery(document).ready(function() {
                     $(this).hide();
                     t = setTimeout(function(){ to.init(); }, d*1000);
                 };
-                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); });
+                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.id!=='play' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
                 if( !!('ontouchstart' in window) ){ $('html, a').css({'cursor':'none'}); }
                 this.init();
             });

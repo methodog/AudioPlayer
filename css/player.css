@@ -28,8 +28,8 @@ video { height:auto; width:100%; position:absolute; bottom:200px; }
 #menu, #track { height:100%; margin:0 auto; width:500px; position:relative; }
 #transcript p { display:none; }
 #transcript p>br:first-child { display:none; }
-#start, #player, #ctrls, #list, #next { position:absolute; bottom:0; }
-#start, #next  { right:-34px; }
+.start, #player, #ctrls, #list { position:absolute; bottom:0; }
+.start  { right:-34px; }
 #list  { left:-34px; }
 #player { background:#fff; height:165px; margin:0 auto; width:100%; position:absolute; }
 #prog { height:40px; border-bottom:1px solid #999; margin:-20px 0 0; position:absolute; width:85%; }
@@ -43,5 +43,6 @@ video { height:auto; width:100%; position:absolute; bottom:200px; }
 #play { background-position:-168px 50%; }
 #play.playing { background-position:-252px 50%; }
 #next { background-position:-420px 50%; }
+#replay { background-position:-519px 50%; }
 
 #timeout>img { height:auto; width:100%; position:absolute; top:0; left:0; z-index:1; }
