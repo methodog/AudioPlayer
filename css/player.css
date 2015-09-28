@@ -14,7 +14,7 @@ ol, ul { list-style-position:outside; margin-left:2.2em; }
 ol { list-style-type:decimal; }
 ul { list-style-type:disc; }
 li { margin:0 0 0.5em; }
-video { height:auto; width:100%; position:absolute; bottom:200px; }
+video { border:1px solid #36424a; height:500px; width:500px; position:absolute; bottom:200px; }
 
 .right { float:right; }
 .button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 19px; text-decoration:none; text-indent:-9999px; width:84px; }
