@@ -182,6 +182,8 @@ jQuery(document).ready(function() {
                         m = Math.floor(t/60,10),
                         s = t-m*60;
                     $('#time').text((m<10?'0'+m:m)+':'+(s<10?'0'+s:s));
+                    $('#timeout')[0].d = t+15;
+                    $('#timeout')[0].init();
                 })
                 .on('durationchange', function(){
                     var media = this;
@@ -226,16 +228,16 @@ jQuery(document).ready(function() {
             });
             $('#timeout').each(function(){
                 var to = this, t, 
-                    e = 4, d = 120; /* e = slide exposure in secs; d = seconds of inactivity before screen times out */
+                    e = 4; // e = slide exposure in secs
+                this.d = 120; // d = default seconds of inactivity before screen times out - this automatically changes to selected audio/video length + 15 secs
                 this.init = function(){
-                    if( $('.menu.playing').length ){
-                        if( $($('.menu.playing').data('media'))[0].paused ){
-                            $(this).show();
-                            $('#player')[0].reset();
-                            if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
-                        }else{
-                            this.reset();
-                        }
+                    clearTimeout(this.t);
+                    if( $('#play.playing').length ){
+                        this.reset();
+                    }else{
+                        $(this).show();
+                        $('#player')[0].reset();
+                        if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
                     }
                 };
                 this.flick = function(){
@@ -245,7 +247,7 @@ jQuery(document).ready(function() {
                 this.reset = function(){
                     clearTimeout(t);
                     $(this).hide();
-                    t = setTimeout(function(){ to.init(); }, d*1000);
+                    this.t = setTimeout(function(){ to.init(); }, this.d*1000);
                 };
                 $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.id!=='play' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
                 if( !!('ontouchstart' in window) ){ $('html, a').css({'cursor':'none'}); }
