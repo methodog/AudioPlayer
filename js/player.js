@@ -238,7 +238,7 @@ jQuery(document).ready(function() {
                     }else{
                         $(this).show();
                         $('#player')[0].reset();
-                        if( $(this).children('img').length>1 ){ t = setTimeout(function(){ to.flick(); }, e); }
+                        if( $(this).children('img').length>1 ){ f = setTimeout(function(){ to.flick(); }, e*1000); }
                     }
                 };
                 this.flick = function(){
