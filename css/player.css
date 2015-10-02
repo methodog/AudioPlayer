@@ -18,7 +18,7 @@ video { border:1px solid #36424a; height:500px; width:500px; position:absolute; 
 
 .right { float:right; }
 .button { background:#34556a url(img/button.png) 0 50% no-repeat; border-radius:41px; color:#fff; display:inline-block; height:84px; margin:0 0 19px; text-decoration:none; text-indent:-9999px; width:84px; }
-.button:hover, #progknob:hover { background-color:#587a8e; }
+.button:hover, #progknob:hover div { background-color:#587a8e; }
 .menu.button { background-image:none; border-radius:0; display:table-row; height:80px; line-height:1em; text-indent:0; width:100%; }
 .menu.button>img { height:80px; width:auto; }
 .menu.button>img.none { visibility:hidden; width:5px; }
@@ -33,7 +33,8 @@ video { border:1px solid #36424a; height:500px; width:500px; position:absolute; 
 #list  { left:-34px; }
 #player { background:#fff; height:165px; margin:0 auto; width:100%; position:absolute; }
 #prog { height:40px; border-bottom:1px solid #999; margin:-20px 0 0; position:absolute; width:85%; }
-#progknob { background:#34556a; height:41px; margin:20px 0 0 0; width:10px; position:absolute; }
+#progknob { background:0; margin:20px 0 0 0; width:30px; position:absolute; }
+#progknob div { background:#34556a; height:41px; margin:auto; width:10px; }
 #time { font-size:25px; margin-top:-0.2em; position:absolute; right:0; }
 #ctrls { text-align:center; width:100%; }
 #volbg { background:#d1cccc; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -55px 23px; width:205px; position:relative; }

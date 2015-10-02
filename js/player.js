@@ -5,13 +5,15 @@ jQuery(document).ready(function() {
     var slider = {
         el: null, xy0: null, xyT: null, value: null, 
         size: function(el){
-            el.wh = [$(el).outerWidth(), $(el).outerHeight()];
+            $e = $(el).children().length? $(el).find(':last') : $(el);
+            el.wh = [$e.outerWidth(), $e.outerHeight()];
             el.whP = [$(el.P).outerWidth(), $(el.P).outerHeight()];
         },
         init: function(el, opt){
             if( typeof el==='string' ){ el = document.getElementById(el); } if( !el ){ return; }
             el.P = el.parentNode;
             slider.size(el);
+            el.xy = [$(el).position().left, $(el).position().top];
             var h = el.whP[0]>el.whP[1]?1:0;
             if( opt.val ){ if( h ){ el.style.left = (opt.val*el.whP[0]-el.wh[0]/2)+'px'; }else{ el.style.top = (opt.val*el.whP[1]-el.wh[1]/2)+'px'; } } 
             el.min = !!opt.min? opt.min : 0; 
@@ -42,8 +44,7 @@ jQuery(document).ready(function() {
         touch: function(e){
             e = e || window.event;
             slider.el = this;
-            this.xy = [$(this).position().left, $(this).position().top];
-            slider.xy0 = this.xy;
+            slider.xy0 = slider.el.xy;
             slider.xyT = getXY(e);
             this.className += ' dragged';
             if( e.type==='touchstart' ){
