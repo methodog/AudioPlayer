@@ -128,7 +128,7 @@ jQuery(document).ready(function() {
             }else if( vid ){
                 $(media).append('<source src="'+file+'" type="video/mp4"></source>');
             }else{
-                $(media).append('<source src="'+file+'.mp3" type="video/mpeg"></source><source src="'+file+'.ogg" type="video/ogg"></source>');
+                $(media).append('<source src="'+file+'.mp3" type="audio/mpeg"></source><source src="'+file+'.ogg" type="audio/ogg"></source>');
             }
             try {
                 $(media)[0].load();
