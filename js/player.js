@@ -140,7 +140,7 @@ jQuery(document).ready(function() {
             $('#track').show();
             $('#play').trigger('click');
         });
-        $('#menu').append($('<a class="button right" id="start" href="javascript:void(0)">Start</a>')
+        $('#menu').append($('<a class="start button right" id="start" href="javascript:void(0)">Start</a>')
             .on('click', function(){ $('a.menu.button').first().trigger('click'); })
         );
         if( $links.length>1 ){
