@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
             slider.size(el);
             el.xy = [$(el).position().left, $(el).position().top];
             var h = el.whP[0]>el.whP[1]?1:0;
-            if( opt.val ){ if( h ){ el.style.left = (opt.val*el.whP[0]-el.wh[0]/2)+'px'; }else{ el.style.top = (opt.val*el.whP[1]-el.wh[1]/2)+'px'; } } 
+            if( opt.val ){ if( h ){ el.xy[0] = opt.val*el.whP[0]-el.wh[0]/2; el.style.left = el.xy[0]+'px'; }else{ el.xy[1] = opt.val*el.whP[1]-el.wh[1]/2; el.style.top = el.xy[1]+'px'; } } 
             el.min = !!opt.min? opt.min : 0; 
             el.max = !!opt.max? opt.max : 1;
             if( typeof(opt.slide)==='function' ){ el.slide = opt.slide; }
@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
         touch: function(e){
             e = e || window.event;
             slider.el = this;
-            slider.xy0 = slider.el.xy;
+            slider.xy0 = this.xy;
             slider.xyT = getXY(e);
             this.className += ' dragged';
             if( e.type==='touchstart' ){
