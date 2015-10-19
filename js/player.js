@@ -238,15 +238,15 @@ jQuery(document).ready(function() {
                     }else{
                         $(this).show();
                         $('#player')[0].reset();
-                        if( $(this).children('img').length>1 ){ f = setTimeout(function(){ to.flick(); }, e*1000); }
+                        if( $(this).children('img').length>1 ){ this.t = setTimeout(function(){ to.flick(); }, e*1000); }
                     }
                 };
                 this.flick = function(){
                     $(this).append($(this).find(':first-child').css({'opacity':0}).animate({'opacity':1}, 1000));
-                    t = setTimeout(function(){ to.flick(); }, e*1000);
+                    this.t = setTimeout(function(){ to.flick(); }, e*1000);
                 };
                 this.reset = function(){
-                    clearTimeout(t);
+                    clearTimeout(this.t);
                     $(this).hide();
                     this.t = setTimeout(function(){ to.init(); }, this.d*1000);
                 };
