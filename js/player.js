@@ -250,7 +250,7 @@ jQuery(document).ready(function() {
                     $(this).hide();
                     this.t = setTimeout(function(){ to.init(); }, this.d*1000);
                 };
-                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.id!=='play' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
+                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.parentNode.id==='timeout' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
                 if( !!('ontouchstart' in window) ){ $('html, a').css({'cursor':'none'}); }
                 this.init();
             });
