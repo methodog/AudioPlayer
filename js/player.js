@@ -251,7 +251,7 @@ jQuery(document).ready(function() {
                     this.t = setTimeout(function(){ to.init(); }, this.d*1000);
                 };
                 $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.parentNode.id==='timeout' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
-                if( !!('ontouchstart' in window) ){ $('html, a').css({'cursor':'none'}); }
+                if( window.location.hash.indexOf('dev')<0 ){ $('html, a').css({'cursor':'none'}); }
                 this.init();
             });
         }
