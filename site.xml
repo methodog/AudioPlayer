@@ -9,7 +9,7 @@
 		<link>track_02</link>
 		<link>track_03</link>
 		<link>track_04</link>
-		<link>track_05</link>
+        <!--link>track_05</link>-->
 	</home>
 
 
@@ -23,33 +23,32 @@
 	</track_01>
 
 	<track_02>
-		<menuname>A soundcloud audio file</menuname>
-		<name>The Life of Donatello &lt;br&gt;Extracts from Vasari's &lt;i&gt;Lives of the Artists.&lt;/i&gt;</name>
-		<audio>http://api.soundcloud.com/tracks/131639284/stream?client_id=3b7e5fdb483fa306f91111e992c6443f</audio>
-        <transcript>./videos/track_02.xml</transcript>
+		<menuname>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt;</menuname>
+		<name>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt; &lt;br&gt;(Hail, Flower of the Tuscan People) (music) Guillaume Dufay, about 1436.</name>
+		<audio>./videos/track_02</audio>
+		<transcript>./videos/track_02.xml</transcript>
+        <menuimage>./videos/curator.jpg</menuimage>
 	</track_02>
-
+	
 	<track_03>
+		<menuname>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;</menuname>
+		<name>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;&lt;br&gt;(If ever in wonder) (music)</name>
+		<audio>./videos/track_03</audio>
+		<transcript>./videos/track_03.xml</transcript>
+        <menuimage>./videos/curator.jpg</menuimage>
+	</track_03>
+
+	<track_04>
 		<menuname>&lt;sup&gt;Guinea pigs&lt;/sup&gt;&lt;br&gt;At home in Peru</menuname>
 		<name>Guinea pigs in Peru</name>
 		<video>./videos/guineas_in_peru.mp4</video>
-	</track_03>
-	
-	<track_04>
-		<menuname>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt;</menuname>
-		<name>&lt;i&gt;Salve flos Tusce gentis&lt;/i&gt; &lt;br&gt;(Hail, Flower of the Tuscan People) (music) Guillaume Dufay, about 1436.</name>
-		<audio>./videos/track_04</audio>
-		<transcript>./videos/track_04.xml</transcript>
-        <menuimage>./videos/curator.jpg</menuimage>
 	</track_04>
-	
-	<track_05>
-		<menuname>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;</menuname>
-		<name>&lt;i&gt;Se mai per maraviglia &lt;/i&gt;&lt;br&gt;(If ever in wonder) (music)</name>
-		<audio>./videos/track_05</audio>
-		<transcript>./videos/track_05.xml</transcript>
-        <menuimage>./videos/curator.jpg</menuimage>
-	</track_05>
 
+    <!--<track_05>
+		<menuname>A soundcloud audio file</menuname>
+		<name>The Life of Donatello &lt;br&gt;Extracts from Vasari's &lt;i&gt;Lives of the Artists.&lt;/i&gt;</name>
+		<audio>http://api.soundcloud.com/tracks/131639284/stream?client_id=3b7e5fdb483fa306f91111e992c6443f</audio>
+        <transcript>./videos/track_05.xml</transcript>
+	</track_05>-->
 
  </site>
