@@ -7,8 +7,7 @@ function log(action, value){
             'value': value,
             'event': 'click'
         });
-    }else{
-        console.log(action, value);
+        //console.log(dataLayer[0].category, action, value);
     }
 }
 
