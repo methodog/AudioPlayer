@@ -151,25 +151,25 @@ jQuery(document).ready(function() {
             $('#transcript>div').hide().filter('.'+t_id).show();
             $('#track').show();
             $('#play').trigger('click');
-            log('Select', trackname);
+            log('content viewed', trackname);
         });
         $('#menu').append($('<a class="start button right" id="start" href="javascript:void(0)">Start</a>')
             .on('click', function(){ 
-                log('Select', 'Start'); 
+                log('navigation', 'Start'); 
                 $('a.menu.button').first().trigger('click'); 
             })
         );
         if( $links.length>1 ){
             $('#ctrls').prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
                 .on('click', function(){ 
-                    log('Select', 'Track List'); 
+                    log('navigation', 'Track List'); 
                     $($('.menu.playing').data('media'))[0].pause(); $('#track').hide(); $('#menu').show(); 
                 })
             );
         }
         $('#ctrls').append($('<a class="button start" id="'+ ($links.length>1?'next':'replay') +'" href="javascript:void(0)">Next</a>')
             .on('click', function(){ 
-                log('Select', ($links.length>1?'Next':'Replay')); 
+                log('navigation', ($links.length>1?'Next':'Replay')); 
                 if( $('a.menu.button').last().hasClass('playing') ){
                     $('a.menu.button').first().trigger('click'); 
                 }else{ $('a.menu.button.playing').parent().next().find('.menu.button').trigger('click'); }
@@ -194,7 +194,7 @@ jQuery(document).ready(function() {
                 $('#menu').show();
                 slider.init($('#volknob')[0], { min:0.4, max:1, val:vol, 
                     slide:function(){ $($('.menu.playing').data('media'))[0].volume = slider.value; },
-                    stop:function(){ log('Volume', +(Math.round((slider.value)+"e+2")+"e-2")*100+'%'); }
+                    stop:function(){ log('volume', +(Math.round((slider.value)+"e+2")+"e-2")*100+'%'); }
                 });
             };
             this.reset();
@@ -211,7 +211,7 @@ jQuery(document).ready(function() {
                     var media = this;
                     slider.init($('#progknob')[0], { max:media.duration,
                         slide:function(){ manualSeek = 1; },
-                        stop:function(){ log('JumpTo', +(Math.round((slider.value/(slider.el.max-slider.el.min))+"e+2")+"e-2")*100+'%'); media.currentTime = slider.value; manualSeek = 0; }
+                        stop:function(){ log('jump to', +(Math.round((slider.value/(slider.el.max-slider.el.min))+"e+2")+"e-2")*100+'%'); media.currentTime = slider.value; manualSeek = 0; }
                     });
                 })
                 .on('timeupdate', function(){
@@ -233,7 +233,7 @@ jQuery(document).ready(function() {
                 .on('pause ended', function(){ $('#play').removeClass('playing'); })
             $('#play').on('click', function(){ 
                 var media = $($('.menu.playing').data('media'))[0]; 
-                if( media.paused ){ log('Player', 'Play'); media.play(); }else{ log('Player', 'Pause'); media.pause(); } 
+                if( media.paused ){ log('navigation', 'Play'); media.play(); }else{ log('navigation', 'Pause'); media.pause(); } 
             });
         }else{
             $('video').attr('controls','controls');
@@ -257,7 +257,7 @@ jQuery(document).ready(function() {
                     if( $('#play.playing').length ){
                         this.reset();
                     }else{
-                        log('Session', 'Timed Out');
+                        log('session', 'Timed Out');
                         $(this).show();
                         $('#player')[0].reset();
                         if( $(this).children('img').length>1 ){ this.t = setTimeout(function(){ to.flick(); }, e*1000); }
@@ -276,7 +276,7 @@ jQuery(document).ready(function() {
                     e.preventDefault(); 
                     to.reset(); 
                     if( e.target.parentNode.id==='timeout'){ 
-                        log('Session', 'Active');
+                        log('session', 'Active');
                         if($('a.menu.button').length===1 ){ 
                             $('a.menu.button').first().trigger('click') 
                         }
