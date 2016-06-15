@@ -3,9 +3,9 @@ function getXY(e){ var xy=[]; if( e.touches && e.touches.length ){ if( e.touches
 function log(action, value){
     if( typeof dataLayer !=='undefined' ){
         dataLayer.push({
+            'event': 'myClick',
             'action': action,
-            'value': value,
-            'event': 'click'
+            'value': value
         });
         //console.log(dataLayer[0].category, action, value);
     }
