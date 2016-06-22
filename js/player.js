@@ -7,7 +7,6 @@ function log(action, value){
             'action': action,
             'value': value
         });
-        //console.log(dataLayer[0].category, action, value);
     }
 }
 

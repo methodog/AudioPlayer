@@ -52,7 +52,7 @@
 <script type="text/javascript">
 if(location.host.indexOf('vam.ac.uk') > -1 || window.location.hash.indexOf('dev') > -1){
     var interactiveID = window.location.host;
-    interactiveID = interactiveID.substring(0, interactiveID.indexOf('interactive')-1);
+    interactiveID = interactiveID.substring(0, interactiveID.indexOf('interactive')>0 ? interactiveID.indexOf('interactive')-1 : interactiveID.length);
     dataLayer = [{'category':interactiveID}];
     <!-- Google Tag Manager -->
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
