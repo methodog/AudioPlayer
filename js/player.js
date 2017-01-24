@@ -1,5 +1,15 @@
 function getXY(e){ var xy=[]; if( e.touches && e.touches.length ){ if( e.touches.length>1 ){ xy[0] = (e.touches[0].pageX+e.touches[0].pageX)/2; xy[1] = (e.touches[0].pageY+e.touches[0].pageY)/2;}else{ xy[0] = e.touches[0].pageX; xy[1] = e.touches[0].pageY; } }else{ xy[0] = e.pageX; xy[1] = e.pageY; } return xy; }
 
+function log(action, value){
+    if( typeof dataLayer !=='undefined' ){
+        dataLayer.push({
+            'event': 'myClick',
+            'action': action,
+            'value': value
+        });
+    }
+}
+
 jQuery(document).ready(function() {
 
     var slider = {
@@ -116,6 +126,7 @@ jQuery(document).ready(function() {
         });
         $('#menu').on('click', '.menu.button', function(){
             var file = $(this).data('file'),
+                trackname = $(this).find('span').text(),
                 media = $(this).data('media'),
                 t_id = this.id,
                 vid = (file.indexOf('.mp4')===file.length-4);
@@ -139,17 +150,25 @@ jQuery(document).ready(function() {
             $('#transcript>div').hide().filter('.'+t_id).show();
             $('#track').show();
             $('#play').trigger('click');
+            log('content viewed', trackname);
         });
         $('#menu').append($('<a class="start button right" id="start" href="javascript:void(0)">Start</a>')
-            .on('click', function(){ $('a.menu.button').first().trigger('click'); })
+            .on('click', function(){ 
+                log('navigation', 'Start'); 
+                $('a.menu.button').first().trigger('click'); 
+            })
         );
         if( $links.length>1 ){
             $('#ctrls').prepend($('<a class="button" id="list" href="javascript:void(0)">Track list</a>')
-                .on('click', function(){ $($('.menu.playing').data('media'))[0].pause(); $('#track').hide(); $('#menu').show(); })
+                .on('click', function(){ 
+                    log('navigation', 'Track List'); 
+                    $($('.menu.playing').data('media'))[0].pause(); $('#track').hide(); $('#menu').show(); 
+                })
             );
         }
         $('#ctrls').append($('<a class="button start" id="'+ ($links.length>1?'next':'replay') +'" href="javascript:void(0)">Next</a>')
             .on('click', function(){ 
+                log('navigation', ($links.length>1?'Next':'Replay')); 
                 if( $('a.menu.button').last().hasClass('playing') ){
                     $('a.menu.button').first().trigger('click'); 
                 }else{ $('a.menu.button.playing').parent().next().find('.menu.button').trigger('click'); }
@@ -173,7 +192,8 @@ jQuery(document).ready(function() {
                 $('#track').hide(); 
                 $('#menu').show();
                 slider.init($('#volknob')[0], { min:0.4, max:1, val:vol, 
-                    slide:function(){ $($('.menu.playing').data('media'))[0].volume = slider.value; }
+                    slide:function(){ $($('.menu.playing').data('media'))[0].volume = slider.value; },
+                    stop:function(){ log('volume', +(Math.round((slider.value)+"e+2")+"e-2")*100+'%'); }
                 });
             };
             this.reset();
@@ -190,7 +210,7 @@ jQuery(document).ready(function() {
                     var media = this;
                     slider.init($('#progknob')[0], { max:media.duration,
                         slide:function(){ manualSeek = 1; },
-                        stop:function(){ media.currentTime = slider.value; manualSeek = 0; }
+                        stop:function(){ log('jump to', +(Math.round((slider.value/(slider.el.max-slider.el.min))+"e+2")+"e-2")*100+'%'); media.currentTime = slider.value; manualSeek = 0; }
                     });
                 })
                 .on('timeupdate', function(){
@@ -212,7 +232,7 @@ jQuery(document).ready(function() {
                 .on('pause ended', function(){ $('#play').removeClass('playing'); })
             $('#play').on('click', function(){ 
                 var media = $($('.menu.playing').data('media'))[0]; 
-                if( media.paused ){ media.play(); }else{ media.pause(); } 
+                if( media.paused ){ log('navigation', 'Play'); media.play(); }else{ log('navigation', 'Pause'); media.pause(); } 
             });
         }else{
             $('video').attr('controls','controls');
@@ -236,6 +256,7 @@ jQuery(document).ready(function() {
                     if( $('#play.playing').length ){
                         this.reset();
                     }else{
+                        log('session', 'Timed Out');
                         $(this).show();
                         $('#player')[0].reset();
                         if( $(this).children('img').length>1 ){ this.t = setTimeout(function(){ to.flick(); }, e*1000); }
@@ -250,7 +271,16 @@ jQuery(document).ready(function() {
                     $(this).hide();
                     this.t = setTimeout(function(){ to.init(); }, this.d*1000);
                 };
-                $(window).on('mousedown', function(e){ to.reset(); e.preventDefault(); if( e.target.parentNode.id==='timeout' && $('a.menu.button').length===1 ){ $('a.menu.button').first().trigger('click') } });
+                $(window).on('mousedown', function(e){ 
+                    e.preventDefault(); 
+                    to.reset(); 
+                    if( e.target.parentNode.id==='timeout'){ 
+                        log('session', 'Active');
+                        if($('a.menu.button').length===1 ){ 
+                            $('a.menu.button').first().trigger('click') 
+                        }
+                    }
+                });
                 if( window.location.hash.indexOf('dev')<0 ){ $('html, a').css({'cursor':'none'}); }
                 this.init();
             });
