@@ -1,3 +1,4 @@
+html, body { height:100%; width:100%; }
 body { background:#36424a; color:#36424a; font:24px/1.7 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; margin:0; }
 img { vertical-align:bottom; }
 p, ol, ul { margin:0 0 20px; }
@@ -24,19 +25,16 @@ video { border:1px solid #36424a; height:500px; width:500px; position:absolute; 
 .menu.button>img.none { visibility:hidden; width:5px; }
 .menu.button>span { display:table-cell; width:100%; padding:0 15px; vertical-align:middle; width:100%; }
 
-#pane { background:#fff; height:760px; margin:0 auto; padding:40px 0 0; width:600px; }
-#menu, #track { height:100%; margin:0 auto; width:500px; position:relative; }
+#pane { background:#fff; box-sizing:border-box; height:100%; margin:0 auto; padding:40px 0 0; width:100%; }
+#menu, #track { height:100%; margin:0 auto; width:calc(100% - 100px); position:relative; }
 #transcript p { display:none; }
 #transcript p>br:first-child { display:none; }
-.start, #player, #ctrls, #list { position:absolute; bottom:0; }
-.start  { right:-34px; }
-#list  { left:-34px; }
-#player { background:#fff; height:165px; margin:0 auto; width:100%; position:absolute; }
+#player { background:#fff; margin:0 auto; width:100%; position:absolute; bottom:0; }
 #prog { height:40px; border-bottom:1px solid #999; margin:-20px 0 0; position:absolute; width:85%; }
 #progknob { background:0; margin:20px 0 0 0; width:30px; position:absolute; }
 #progknob div { background:#34556a; height:41px; margin:auto; width:10px; }
 #time { font-size:25px; margin-top:-0.2em; position:absolute; right:0; }
-#ctrls { text-align:center; width:100%; }
+#ctrls { display:flex; justify-content:space-between; text-align:center; width:100%; }
 #volbg { background:#d1cccc; border:3px solid #36424a; border-radius:42px; display:inline-block; height:78px; margin:0 0 -55px 23px; width:205px; position:relative; }
 #vol { margin:0 39px; width:127px; position:absolute; }
 #volknob { background-position:-336px 50%; margin:-3px 0 0; position:absolute; left:0; }
@@ -46,4 +44,4 @@ video { border:1px solid #36424a; height:500px; width:500px; position:absolute; 
 #next { background-position:-420px 50%; }
 #replay { background-position:-519px 50%; }
 
-#timeout>img { height:auto; width:100%; position:absolute; top:0; left:0; z-index:1; }
+#timeout, #timeout>img { background-color:#fff; height:100%; width:100%; object-fit:contain; position:absolute; top:0; left:0; z-index:1; }
