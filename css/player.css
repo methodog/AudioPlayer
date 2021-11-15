@@ -1,9 +1,16 @@
-body { background:#36424a; color:#36424a; font:24px/1.7 "V&A TheSansPlain",arial,helvetica,freesans,sans-serif; margin:0; }
+@font-face {
+  font-display: swap;
+  font-family: 'The Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('fonts/V&A TheSansA6-5Plain.woff2') format('woff2'), url('fonts/V&A TheSansA6-5Plain.woff') format('woff');
+}
+body { background:#36424a; color:#36424a; font:24px/1.7 'The Sans',arial,helvetica,freesans,sans-serif; margin:0; }
 img { vertical-align:bottom; }
 p, ol, ul { margin:0 0 20px; }
 a { color:#292728; cursor:pointer; outline:none; text-decoration:underline; }
 h1, h2 { font-size:125%; font-weight:normal; line-height:1.18em; margin:0 0 40px; }
-strong { font-weight:500; }
+strong { font-weight:600; }
 abbr, acronym { border-bottom:1px dotted #b5b5b5; } 
 em, i { font-style:italic; }
 small, sub, sup { display:inline-block; font-size:75%; line-height:1em; }
